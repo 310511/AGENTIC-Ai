@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-agent-contracts"
+version = "0.1.0"
+description = "Shared Pydantic schemas and API contracts for the AI Agent Platform"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic[email]==2.7.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["contracts*"]

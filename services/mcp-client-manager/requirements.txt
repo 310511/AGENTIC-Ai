@@ -1,0 +1,6 @@
+# Phase 5 — add pinned versions when implementation begins
+# mcp==x.x.x  (official MCP Python SDK)
+# httpx==0.27.0
+# pydantic==2.7.1
+# pydantic-settings==2.2.1
+# opentelemetry-api==1.24.0

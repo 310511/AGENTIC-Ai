@@ -1,0 +1,75 @@
+# ============================================================
+# OpenTelemetry Collector configuration
+# Receives traces and metrics from all services, exports to
+# Prometheus (metrics) and Loki (logs).
+# ============================================================
+
+receivers:
+  # Accept OTLP over gRPC and HTTP
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+processors:
+  # Batch spans and metrics before exporting to reduce overhead.
+  batch:
+    timeout: 5s
+    send_batch_size: 512
+
+  # Drop spans that are just health-check noise.
+  filter/health:
+    traces:
+      span:
+        - 'attributes["http.route"] == "/health"'
+        - 'attributes["http.route"] == "/ready"'
+
+  # Add resource attributes useful for log correlation.
+  resource:
+    attributes:
+      - key: environment
+        value: development
+        action: upsert
+
+exporters:
+  # Export metrics to Prometheus scrape endpoint.
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+    namespace: agent_platform
+
+  # Export logs to Loki.
+  loki:
+    endpoint: http://loki:3100/loki/api/v1/push
+    default_labels_enabled:
+      exporter: false
+      job: true
+
+  # Debug exporter — logs to stdout (disable in production).
+  debug:
+    verbosity: normal
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [filter/health, batch, resource]
+      exporters: [debug]
+
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [prometheus]
+
+    logs:
+      receivers: [otlp]
+      processors: [batch, resource]
+      exporters: [loki, debug]
+
+  # Expose collector's own health and metrics.
+  extensions: []
+
+  telemetry:
+    metrics:
+      address: 0.0.0.0:8888
