@@ -23,7 +23,10 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 
 from .config import get_settings
 from .graph.workflow import build_workflow
+from .graph_client import GraphClient
+from .knowledge_client import KnowledgeClient
 from .llm.gateway import LLMGateway
+from .mcp_client import MCPClient
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO,
                     format="%(asctime)s %(levelname)s %(name)s — %(message)s")
@@ -40,17 +43,30 @@ _session_factory = async_sessionmaker(_engine, expire_on_commit=False)
 # ── LLM + compiled workflow (built once at startup) ───────────────────────────
 _llm: LLMGateway | None = None
 _workflow = None
+_knowledge: KnowledgeClient | None = None
+_graph: GraphClient | None = None
+_mcp: MCPClient | None = None
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global _llm, _workflow
+    global _llm, _workflow, _knowledge, _graph, _mcp
     _llm = LLMGateway(settings)
-    _workflow = build_workflow(_llm)
-    logger.info("Orchestrator ready — model=%s ollama=%s",
-                settings.default_llm_model, settings.ollama_base_url)
+    _knowledge = KnowledgeClient(settings)
+    _graph = GraphClient(settings)
+    _mcp = MCPClient(settings)
+    _workflow = build_workflow(_llm, _mcp)
+    logger.info(
+        "Orchestrator ready — model=%s ollama=%s knowledge=%s graph=%s mcp=%s",
+        settings.default_llm_model, settings.ollama_base_url,
+        settings.knowledge_url, settings.graph_memory_url,
+        settings.mcp_client_manager_url,
+    )
     yield
     await _engine.dispose()
+    await _knowledge.close()
+    await _graph.close()
+    await _mcp.close()
 
 
 app = FastAPI(title="AI Agent Orchestrator", version="0.1.0",
@@ -122,12 +138,27 @@ async def _run_workflow(req: RunRequest) -> None:
     try:
         await _set_task_status(task_id, _STATUS_IN_PROGRESS)
 
+        # Retrieve relevant context from the knowledge service before planning.
+        # Non-fatal: empty string if knowledge service is unavailable.
+        chunks = await _knowledge.retrieve(req.tenant_id, f"{req.title} {req.description}")
+        context = "\n\n".join(
+            f"[{c['document_id']} chunk {c['chunk_index']}] {c['text']}"
+            for c in chunks
+        ) if chunks else ""
+
+        # Retrieve graph memory context (entities/relationships). Non-fatal.
+        graph_context = await _graph.retrieve(
+            req.tenant_id, f"{req.title} {req.description}"
+        )
+
         initial_state = {
-            "task_id":     task_id,
-            "tenant_id":   req.tenant_id,
-            "title":       req.title,
-            "description": req.description,
-            "retries":     0,
+            "task_id":       task_id,
+            "tenant_id":     req.tenant_id,
+            "title":         req.title,
+            "description":   req.description,
+            "context":       context,
+            "graph_context": graph_context,
+            "retries":       0,
         }
 
         final_state = await _workflow.ainvoke(initial_state)  # type: ignore[union-attr]
@@ -144,6 +175,17 @@ async def _run_workflow(req: RunRequest) -> None:
                 result={"output": final_state.get("result", "")},
             )
             logger.info("Task %s completed", task_id)
+            # Persist the task title/description as a minimal entity so future
+            # tasks can retrieve relevant historical context. Non-fatal.
+            await _graph.store(
+                req.tenant_id,
+                entities=[{
+                    "text": req.title,
+                    "label": "TASK",
+                    "source_document_id": task_id,
+                    "metadata": {"description": req.description[:256]},
+                }],
+            )
 
     except Exception as exc:
         logger.exception("Unhandled error in workflow for task %s", task_id)

@@ -9,6 +9,31 @@ from .tasks import (
 )
 from .users import UserContext, UserRole
 from .common import APIResponse, ErrorDetail, PaginationParams
+from .knowledge import (
+    IngestRequest,
+    IngestResponse,
+    RetrieveRequest,
+    RetrieveResponse,
+    ChunkResult,
+    ExtractRequest,
+    ExtractResponse,
+    EntityResult,
+)
+from .graph import (
+    GraphEntity,
+    GraphRelationship,
+    GraphStoreRequest,
+    GraphStoreResponse,
+    GraphRetrieveRequest,
+    GraphRetrieveResponse,
+    GraphDeleteRequest,
+)
+from .mcp import (
+    ToolInfo,
+    ToolListResponse,
+    ToolCallRequest,
+    ToolCallResponse,
+)
 
 __all__ = [
     "TaskCreate",
@@ -21,4 +46,23 @@ __all__ = [
     "APIResponse",
     "ErrorDetail",
     "PaginationParams",
+    "IngestRequest",
+    "IngestResponse",
+    "RetrieveRequest",
+    "RetrieveResponse",
+    "ChunkResult",
+    "ExtractRequest",
+    "ExtractResponse",
+    "EntityResult",
+    "GraphEntity",
+    "GraphRelationship",
+    "GraphStoreRequest",
+    "GraphStoreResponse",
+    "GraphRetrieveRequest",
+    "GraphRetrieveResponse",
+    "GraphDeleteRequest",
+    "ToolInfo",
+    "ToolListResponse",
+    "ToolCallRequest",
+    "ToolCallResponse",
 ]

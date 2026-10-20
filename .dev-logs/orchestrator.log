@@ -1,0 +1,3 @@
+./dev.sh:88: no such file or directory: .venv/bin/uvicorn
+./dev.sh:116: no such file or directory: .venv/bin/uvicorn
+./dev.sh:116: no such file or directory: .venv/bin/uvicorn

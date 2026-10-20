@@ -25,6 +25,16 @@ class Settings(BaseSettings):
     # Internal API base URL (orchestrator calls back to update task status)
     api_internal_url: str = Field("http://api:8000")
 
+    # Knowledge service
+    knowledge_url: str = Field("http://localhost:8002")
+    knowledge_top_k: int = Field(5)
+
+    # Graph memory service
+    graph_memory_url: str = Field("http://localhost:8003")
+
+    # MCP Client Manager
+    mcp_client_manager_url: str = Field("http://localhost:8004")
+
 
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:
