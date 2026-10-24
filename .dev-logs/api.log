@@ -1,3 +1,30 @@
 ./dev.sh:101: no such file or directory: .venv/bin/uvicorn
 ./dev.sh:128: no such file or directory: .venv/bin/uvicorn
 ./dev.sh:128: no such file or directory: .venv/bin/uvicorn
+INFO:     Started server process [99216]
+INFO:     Waiting for application startup.
+2026-10-21 09:52:37,974 INFO app.main — Starting AI Agent Platform API (debug=False)
+2026-10-21 09:52:38,310 INFO app.database — Database engine created
+2026-10-21 09:52:38,321 INFO app.main — Startup complete
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:65144 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2026-10-21 09:54:20,630 INFO app.main — Shutting down AI Agent Platform API
+2026-10-21 09:54:20,632 INFO app.database — Database engine disposed
+INFO:     Application shutdown complete.
+INFO:     Finished server process [99216]
+INFO:     Started server process [382]
+INFO:     Waiting for application startup.
+2026-10-21 09:55:12,455 INFO app.main — Starting AI Agent Platform API (debug=True)
+2026-10-21 09:55:12,474 INFO app.database — Database engine created
+2026-10-21 09:55:12,482 INFO app.main — Startup complete
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:65184 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65204 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65204 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65218 - "POST /api/v1/tasks HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:65239 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65239 - "GET /openapi.json HTTP/1.1" 200 OK

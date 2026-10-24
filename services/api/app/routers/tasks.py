@@ -36,8 +36,7 @@ from contracts.tasks import (
 from contracts.users import UserContext, UserRole
 
 from ..database import get_db
-from ..dependencies import CurrentUser, OperatorUser
-from ..main import get_http_client
+from ..dependencies import CurrentUser, OperatorUser, get_http_client
 from ..models.task import Task
 from ..config import get_settings
 

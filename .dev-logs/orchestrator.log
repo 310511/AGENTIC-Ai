@@ -1,3 +1,9 @@
 ./dev.sh:88: no such file or directory: .venv/bin/uvicorn
 ./dev.sh:116: no such file or directory: .venv/bin/uvicorn
 ./dev.sh:116: no such file or directory: .venv/bin/uvicorn
+INFO:     Started server process [99215]
+INFO:     Waiting for application startup.
+2026-10-21 09:52:38,284 INFO app.main — Orchestrator ready — model=llama3.2 ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:65146 - "GET /health HTTP/1.1" 200 OK

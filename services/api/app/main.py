@@ -23,6 +23,7 @@ from auth.exceptions import AuthError
 
 from .config import get_settings
 from .database import close_engine, get_engine
+from .dependencies import set_http_client
 from .middleware import RequestIDMiddleware
 from .routers import health, tasks
 
@@ -38,16 +39,7 @@ logger = logging.getLogger(__name__)
 
 settings = get_settings()
 
-# Shared HTTP client for internal service calls (e.g. orchestrator).
-# Initialised on startup, closed on shutdown.
-http_client: httpx.AsyncClient | None = None
-
-
-def get_http_client() -> httpx.AsyncClient:
-    """FastAPI dependency — returns the shared internal HTTP client."""
-    if http_client is None:
-        raise RuntimeError("HTTP client not initialised")
-    return http_client
+# shortcut: http_client lifecycle lives in dependencies.py; kept here for startup/shutdown wiring
 
 
 def create_app() -> FastAPI:
@@ -114,19 +106,19 @@ def create_app() -> FastAPI:
 
     @app.on_event("startup")
     async def on_startup() -> None:
-        global http_client
         logger.info("Starting AI Agent Platform API (debug=%s)", settings.api_debug)
         get_engine()
-        http_client = httpx.AsyncClient(timeout=10.0)
+        set_http_client(httpx.AsyncClient(timeout=10.0))
         logger.info("Startup complete")
 
     @app.on_event("shutdown")
     async def on_shutdown() -> None:
-        global http_client
+        from .dependencies import _http_client
         logger.info("Shutting down AI Agent Platform API")
         await close_engine()
-        if http_client:
-            await http_client.aclose()
+        if _http_client:
+            await _http_client.aclose()
+        set_http_client(None)
 
     return app
 

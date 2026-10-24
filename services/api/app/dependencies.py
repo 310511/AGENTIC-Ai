@@ -118,3 +118,22 @@ async def require_admin_role(
 CurrentUser = Annotated[UserContext, Depends(get_current_user)]
 OperatorUser = Annotated[UserContext, Depends(require_operator_role)]
 AdminUser = Annotated[UserContext, Depends(require_admin_role)]
+
+
+# ── Shared HTTP client dependency ─────────────────────────────────────────────
+
+import httpx as _httpx  # local import to avoid circular at module level
+
+_http_client: "_httpx.AsyncClient | None" = None
+
+
+def set_http_client(client: "_httpx.AsyncClient | None") -> None:
+    """Called from main.py startup/shutdown to set the shared client."""
+    global _http_client
+    _http_client = client
+
+
+def get_http_client() -> "_httpx.AsyncClient":
+    if _http_client is None:
+        raise RuntimeError("HTTP client not initialised")
+    return _http_client
