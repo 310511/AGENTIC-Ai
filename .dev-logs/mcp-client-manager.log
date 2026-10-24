@@ -4,3 +4,13 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
 INFO:     127.0.0.1:65154 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [99214]
+INFO:     Started server process [87437]
+INFO:     Waiting for application startup.
+2026-10-24 12:10:11,416 INFO app.main — MCP Client Manager ready — servers=[]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53889 - "GET /health HTTP/1.1" 200 OK

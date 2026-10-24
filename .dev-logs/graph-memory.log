@@ -6,3 +6,13 @@ Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reas
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
 INFO:     127.0.0.1:65150 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [99213]
+INFO:     Started server process [87436]
+INFO:     Waiting for application startup.
+2026-10-24 12:10:11,160 INFO app.main — Graph memory service ready — neo4j=bolt://localhost:7687
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53887 - "GET /health HTTP/1.1" 200 OK

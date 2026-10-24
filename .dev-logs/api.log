@@ -28,3 +28,17 @@ INFO:     127.0.0.1:65204 - "GET /openapi.json HTTP/1.1" 200 OK
 INFO:     127.0.0.1:65218 - "POST /api/v1/tasks HTTP/1.1" 401 Unauthorized
 INFO:     127.0.0.1:65239 - "GET /docs HTTP/1.1" 200 OK
 INFO:     127.0.0.1:65239 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2026-10-24 11:49:54,726 INFO app.main — Shutting down AI Agent Platform API
+2026-10-24 11:49:54,785 INFO app.database — Database engine disposed
+INFO:     Application shutdown complete.
+INFO:     Finished server process [382]
+INFO:     Started server process [87439]
+INFO:     Waiting for application startup.
+2026-10-24 12:10:11,544 INFO app.main — Starting AI Agent Platform API (debug=True)
+2026-10-24 12:10:11,584 INFO app.database — Database engine created
+2026-10-24 12:10:11,605 INFO app.main — Startup complete
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53881 - "GET /health HTTP/1.1" 200 OK
