@@ -1,0 +1,236 @@
+2026-10-24 13:25:51,164 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/workers/.venv/lib/python3.12/site-packages/aiormq/abc.py", line 44, in __inner
+    return await self.task
+           ^^^^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/utsavgautam/AIAgent/services/workers/app/main.py", line 168, in <module>
+    main()
+  File "/Users/utsavgautam/AIAgent/services/workers/app/main.py", line 164, in main
+    asyncio.run(run_consumer(once=once))
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/workers/app/main.py", line 128, in run_consumer
+    await declare_queues(channel, settings)
+  File "/Users/utsavgautam/AIAgent/services/workers/app/queue.py", line 33, in declare_queues
+    await channel.declare_queue(
+  File "/Users/utsavgautam/AIAgent/services/workers/.venv/lib/python3.12/site-packages/aio_pika/robust_channel.py", line 229, in declare_queue
+    queue: RobustQueue = await super().declare_queue(   # type: ignore
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/workers/.venv/lib/python3.12/site-packages/aio_pika/channel.py", line 350, in declare_queue
+    await queue.declare(timeout=timeout)
+  File "/Users/utsavgautam/AIAgent/services/workers/.venv/lib/python3.12/site-packages/aio_pika/queue.py", line 100, in declare
+    self.declaration_result = await channel.queue_declare(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/workers/.venv/lib/python3.12/site-packages/aiormq/channel.py", line 858, in queue_declare
+    return await self.rpc(
+           ^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/workers/.venv/lib/python3.12/site-packages/aiormq/base.py", line 164, in wrap
+    return await self.create_task(func(self, *args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/workers/.venv/lib/python3.12/site-packages/aiormq/abc.py", line 46, in __inner
+    raise self._exception from e
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/tasks.py", line 684, in _wrap_awaitable
+    return await awaitable
+           ^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/workers/.venv/lib/python3.12/site-packages/aiormq/abc.py", line 46, in __inner
+    raise self._exception from e
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/tasks.py", line 684, in _wrap_awaitable
+    return await awaitable
+           ^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/workers/.venv/lib/python3.12/site-packages/aiormq/abc.py", line 46, in __inner
+    raise self._exception from e
+  File "/Users/utsavgautam/AIAgent/services/workers/.venv/lib/python3.12/site-packages/aiormq/channel.py", line 441, in _reader
+    await hook(frame)
+  File "/Users/utsavgautam/AIAgent/services/workers/.venv/lib/python3.12/site-packages/aiormq/channel.py", line 410, in _on_close_frame
+    raise exc
+aiormq.exceptions.ChannelPreconditionFailed: PRECONDITION_FAILED - inequivalent arg 'x-dead-letter-exchange' for queue 'agent.tasks' in vhost '/': received the value 'agent.dlx' of type 'longstr' but current is none
+2026-10-24 13:32:35,858 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-10-24 13:32:35,897 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-10-24 13:32:35,898 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-10-24 13:38:51,150 INFO __main__ — Received task_id=0753af1c-cb33-45dc-8bfc-fbba36695e79 attempt=1
+2026-10-24 13:38:51,152 INFO app.runner — Worker attempt=1 task_id=0753af1c-cb33-45dc-8bfc-fbba36695e79
+2026-10-24 13:38:51,350 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
+2026-10-24 13:38:54,404 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:38:57,409 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:00,413 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:03,421 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:06,432 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:09,442 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:12,446 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:15,451 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:18,459 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:21,470 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:24,481 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:27,486 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:30,494 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:33,502 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:36,511 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:39,520 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:42,528 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:45,533 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:48,541 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:51,548 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:54,555 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:39:57,562 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:00,586 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:03,602 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:06,614 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:09,625 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:12,635 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:15,643 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:18,651 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:21,659 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:24,665 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:27,674 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:30,683 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:33,691 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:36,699 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:39,708 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:42,717 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:45,727 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:48,732 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:51,737 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:54,744 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:40:57,754 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:00,762 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:03,772 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:06,781 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:09,790 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:12,832 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:15,847 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:18,855 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:21,864 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:24,872 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:27,879 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:30,888 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:33,896 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:36,904 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:39,911 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:42,921 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:45,930 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:48,938 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:51,946 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:54,955 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:41:57,964 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:00,971 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:03,982 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:06,989 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:09,993 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:13,003 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:16,013 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:19,021 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:22,030 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:25,037 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:28,045 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:31,054 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:34,063 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:37,071 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:40,079 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:43,088 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:46,097 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:49,105 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:52,114 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:55,130 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:42:58,141 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:01,150 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:04,157 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:07,166 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:10,175 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:13,180 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:16,188 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:19,195 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:22,203 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:25,211 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:28,219 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:31,228 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:34,237 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:37,245 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:40,253 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:43,261 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:46,269 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:49,277 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:52,285 INFO httpx — HTTP Request: GET http://localhost:8001/status/0753af1c-cb33-45dc-8bfc-fbba36695e79 "HTTP/1.1 200 OK"
+2026-10-24 13:43:52,286 ERROR app.runner — Task 0753af1c-cb33-45dc-8bfc-fbba36695e79 timed out after 300s (attempt 1)
+2026-10-24 13:43:52,316 WARNING __main__ — Task 0753af1c-cb33-45dc-8bfc-fbba36695e79 failed attempt 1/3, retrying in 5s
+2026-10-24 13:43:57,321 ERROR asyncio — Task exception was never retrieved
+future: <Task finished name='Task-20' coro=<_process_message() done, defined at /Users/utsavgautam/AIAgent/services/workers/app/main.py:47> exception=AttributeError("'Channel' object has no attribute 'default_exchange'")>
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/workers/app/main.py", line 90, in _process_message
+    await channel.default_exchange.publish(
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Channel' object has no attribute 'default_exchange'
+2026-10-24 14:47:18,884 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-10-24 14:47:18,917 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-10-24 14:47:18,926 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-10-24 15:49:13,982 ERROR aiormq.connection — Unexpected connection close from remote "amqp://guest:******@localhost:5672/", Connection.Close(reply_code=320, reply_text="CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'")
+NoneType: None
+2026-10-24 15:49:13,988 ERROR aiormq.connection — Unexpected connection close from remote "amqp://guest:******@localhost:5672/", Connection.Close(reply_code=320, reply_text="CONNECTION_FORCED - broker forced connection closure with reason 'shutdown'")
+NoneType: None
+2026-10-24 15:49:14,068 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:14,067 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:14,077 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:14,077 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:14,078 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:14,078 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:20,594 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:20,594 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:20,773 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:20,774 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:25,598 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:25,599 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:25,780 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:25,781 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:30,603 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:30,604 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:30,786 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:30,787 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:35,609 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:35,609 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:35,793 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:35,794 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:40,613 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:40,613 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:40,798 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:40,799 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:45,616 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:45,616 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:45,806 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:45,807 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:50,621 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:50,621 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:50,811 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:50,812 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:55,624 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:55,625 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:49:55,815 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:49:55,816 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:50:00,628 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:50:00,628 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:50:00,820 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:50:00,821 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:50:05,633 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:50:05,634 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:50:05,825 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:50:05,827 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:50:10,637 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:50:10,637 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:50:10,830 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:50:10,831 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:50:15,642 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:50:15,642 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.
+2026-10-24 15:50:15,836 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 15:50:15,838 WARNING aio_pika.robust_connection — Connection attempt to "amqp://guest:******@localhost:5672/" failed: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5672, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5672). Reconnecting after 5 seconds.

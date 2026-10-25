@@ -194,6 +194,30 @@ async def _run_workflow(req: RunRequest) -> None:
 
 # ── Routes ────────────────────────────────────────────────────────────────────
 
+@app.get("/status/{task_id}")
+async def task_status(task_id: str):
+    """Return current task status from Postgres."""
+    try:
+        uuid.UUID(task_id)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid task_id")
+    from sqlalchemy import text as _text
+    async with _session_factory() as session:
+        row = (await session.execute(
+            _text("SELECT id, status, result, error_message, updated_at FROM tasks WHERE id = :id"),
+            {"id": task_id},
+        )).mappings().one_or_none()
+    if row is None:
+        raise HTTPException(status_code=404, detail="Task not found")
+    return {
+        "task_id":       str(row["id"]),
+        "status":        row["status"],
+        "result":        row["result"],
+        "error_message": row["error_message"],
+        "updated_at":    row["updated_at"].isoformat() if row["updated_at"] else None,
+    }
+
+
 @app.post("/run", status_code=status.HTTP_202_ACCEPTED)
 async def run_task(req: RunRequest, background_tasks: BackgroundTasks):
     """

@@ -16,3 +16,46 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
 INFO:     127.0.0.1:53887 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [87436]
+INFO:     Started server process [91261]
+INFO:     Waiting for application startup.
+2026-10-24 12:33:44,050 INFO app.main — Graph memory service ready — neo4j=bolt://localhost:7687
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
+INFO:     127.0.0.1:55683 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [91261]
+INFO:     Started server process [5274]
+INFO:     Waiting for application startup.
+2026-10-24 13:25:50,156 INFO app.main — Graph memory service ready — neo4j=bolt://localhost:7687
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59108 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [5274]
+INFO:     Started server process [7890]
+INFO:     Waiting for application startup.
+2026-10-24 13:32:35,897 INFO app.main — Graph memory service ready — neo4j=bolt://localhost:7687
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [7890]
+INFO:     Started server process [22419]
+INFO:     Waiting for application startup.
+2026-10-24 14:47:19,095 INFO app.main — Graph memory service ready — neo4j=bolt://localhost:7687
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8003 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60495 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [22419]

@@ -40,6 +40,8 @@ from ..dependencies import CurrentUser, OperatorUser, get_http_client
 from ..models.task import Task
 from ..config import get_settings
 
+logger = logging.getLogger(__name__)
+
 
 async def _trigger_orchestrator(
     client: httpx.AsyncClient,
@@ -48,23 +50,28 @@ async def _trigger_orchestrator(
     title: str,
     description: str,
 ) -> None:
-    """Fire-and-forget POST to the orchestrator /run endpoint."""
+    """
+    Route task to the worker queue (durable). Falls back to direct
+    orchestrator HTTP call if RabbitMQ is unavailable.
+    """
+    from ..publisher import publish_task
+    queued = await publish_task(task_id, tenant_id, title, description)
+    if queued:
+        return
+    # Fallback: direct call (no durability, but better than dropping the task).
     orchestrator_url = get_settings().orchestrator_url
     try:
         await client.post(
             f"{orchestrator_url}/run",
             json={
-                "task_id": task_id,
-                "tenant_id": tenant_id,
-                "title": title,
+                "task_id":     task_id,
+                "tenant_id":   tenant_id,
+                "title":       title,
                 "description": description,
             },
         )
     except Exception as exc:
-        # Log but never fail the API response — the task is already saved.
         logger.warning("Could not reach orchestrator for task %s: %s", task_id, exc)
-logger = logging.getLogger(__name__)
-
 router = APIRouter(prefix="/tasks", tags=["tasks"])
 
 

@@ -25,7 +25,7 @@ from .config import get_settings
 from .database import close_engine, get_engine
 from .dependencies import set_http_client
 from .middleware import RequestIDMiddleware
-from .routers import health, tasks
+from .routers import health, tasks, documents
 
 # ── Logging ───────────────────────────────────────────────────────────────────
 logging.basicConfig(
@@ -70,6 +70,7 @@ def create_app() -> FastAPI:
     # ── Routers ───────────────────────────────────────────────────────────
     app.include_router(health.router)
     app.include_router(tasks.router, prefix="/api/v1")
+    app.include_router(documents.router, prefix="/api/v1")
 
     # ── Global exception handlers ─────────────────────────────────────────
 
@@ -106,19 +107,27 @@ def create_app() -> FastAPI:
 
     @app.on_event("startup")
     async def on_startup() -> None:
+        from .publisher import connect as rmq_connect
         logger.info("Starting AI Agent Platform API (debug=%s)", settings.api_debug)
         get_engine()
         set_http_client(httpx.AsyncClient(timeout=10.0))
+        try:
+            await rmq_connect(settings.rabbitmq_url)
+        except Exception as exc:
+            # Non-fatal — tasks fall back to direct orchestrator call if RabbitMQ is down.
+            logger.warning("RabbitMQ unavailable at startup: %s", exc)
         logger.info("Startup complete")
 
     @app.on_event("shutdown")
     async def on_shutdown() -> None:
         from .dependencies import _http_client
+        from .publisher import close as rmq_close
         logger.info("Shutting down AI Agent Platform API")
         await close_engine()
         if _http_client:
             await _http_client.aclose()
         set_http_client(None)
+        await rmq_close()
 
     return app
 

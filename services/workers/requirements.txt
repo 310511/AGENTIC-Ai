@@ -1,7 +1,13 @@
-# Phase 6 — add pinned versions when implementation begins
-# aio-pika==9.x.x
-# pydantic==2.7.1
-# pydantic-settings==2.2.1
-# httpx==0.27.0
-# opentelemetry-api==1.24.0
-# opentelemetry-sdk==1.24.0
+# ── Message broker ───────────────────────────────────────────
+aio-pika==9.4.3
+# ── HTTP client (inter-service calls) ────────────────────────
+httpx==0.27.0
+# ── Config ───────────────────────────────────────────────────
+pydantic==2.7.4
+pydantic-settings==2.2.1
+# ── Database ──────────────────────────────────────────────────
+sqlalchemy[asyncio]==2.0.31
+asyncpg==0.30.0
+# ── Observability ─────────────────────────────────────────────
+opentelemetry-api==1.45.1
+opentelemetry-sdk==1.45.1

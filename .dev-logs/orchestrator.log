@@ -17,3 +17,408 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
 INFO:     127.0.0.1:53883 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [87438]
+INFO:     Started server process [91263]
+INFO:     Waiting for application startup.
+2026-10-24 12:33:44,544 INFO app.main — Orchestrator ready — model=llama3.2 ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:55679 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55901 - "GET /status/00000000-0000-0000-0000-000000000099 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55936 - "GET /status/00000000-0000-0000-0000-000000000099 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56009 - "GET /status/00000000-0000-0000-0000-000000000099 HTTP/1.1" 404 Not Found
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [91263]
+INFO:     Started server process [5276]
+INFO:     Waiting for application startup.
+2026-10-24 13:25:50,814 INFO app.main — Orchestrator ready — model=llama3.2 ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59104 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [5276]
+INFO:     Started server process [7892]
+INFO:     Waiting for application startup.
+2026-10-24 13:32:36,510 INFO app.main — Orchestrator ready — model=llama3.2 ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59422 - "POST /run HTTP/1.1" 202 Accepted
+2026-10-24 13:38:51,390 ERROR app.main — Unhandled error in workflow for task 0753af1c-cb33-45dc-8bfc-fbba36695e79
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 581, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 819, in _prepare
+    prepared_stmt = await self._connection.prepare(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 661, in prepare
+    return await self._prepare(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 680, in _prepare
+    stmt = await self._get_statement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 466, in _get_statement
+    statement = await self._protocol.prepare(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 161, in prepare
+asyncpg.exceptions.UndefinedFunctionError: operator does not exist: uuid = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 656, in execute
+    await_(self._prepare_and_execute(operation, parameters))
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 167, in await_
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 205, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 618, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 568, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 847, in _handle_exception
+    super()._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/connectors/asyncio.py", line 412, in _handle_exception
+    self._handle_exception_no_connection(self.dbapi, error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 840, in _handle_exception_no_connection
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: operator does not exist: uuid = character varying
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 139, in _run_workflow
+    await _set_task_status(task_id, _STATUS_IN_PROGRESS)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 112, in _set_task_status
+    await session.execute(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py", line 651, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 210, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2473, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2373, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1458, in execute
+    return meth(
+           ^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 533, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1678, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1832, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1972, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2342, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 656, in execute
+    await_(self._prepare_and_execute(operation, parameters))
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 167, in await_
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 205, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 618, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 568, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 847, in _handle_exception
+    super()._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/connectors/asyncio.py", line 412, in _handle_exception
+    self._handle_exception_no_connection(self.dbapi, error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 840, in _handle_exception_no_connection
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) operator does not exist: uuid = character varying
+[SQL: UPDATE tasks SET status = $1::VARCHAR, updated_at = $2::TIMESTAMP WITH TIME ZONE WHERE id = $3::VARCHAR]
+[parameters: ('in_progress', datetime.datetime(2026, 10, 24, 8, 8, 51, 350085, tzinfo=datetime.timezone.utc), '0753af1c-cb33-45dc-8bfc-fbba36695e79')]
+(Background on this error at: https://sqlalche.me/e/21/f405)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 581, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 819, in _prepare
+    prepared_stmt = await self._connection.prepare(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 661, in prepare
+    return await self._prepare(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 680, in _prepare
+    stmt = await self._get_statement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 466, in _get_statement
+    statement = await self._protocol.prepare(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 161, in prepare
+asyncpg.exceptions.UndefinedFunctionError: operator does not exist: uuid = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 656, in execute
+    await_(self._prepare_and_execute(operation, parameters))
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 167, in await_
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 205, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 618, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 568, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 847, in _handle_exception
+    super()._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/connectors/asyncio.py", line 412, in _handle_exception
+    self._handle_exception_no_connection(self.dbapi, error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 840, in _handle_exception_no_connection
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: operator does not exist: uuid = character varying
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    await response(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/responses.py", line 162, in __call__
+    await self.background()
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/background.py", line 45, in __call__
+    await task()
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/background.py", line 28, in __call__
+    await self.func(*self.args, **self.kwargs)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 192, in _run_workflow
+    await _set_task_status(task_id, _STATUS_FAILED, error_message=str(exc))
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 112, in _set_task_status
+    await session.execute(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py", line 651, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 210, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2473, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2373, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1458, in execute
+    return meth(
+           ^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 533, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1678, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1832, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1972, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2342, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 656, in execute
+    await_(self._prepare_and_execute(operation, parameters))
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 167, in await_
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 205, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 618, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 568, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 847, in _handle_exception
+    super()._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/connectors/asyncio.py", line 412, in _handle_exception
+    self._handle_exception_no_connection(self.dbapi, error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 840, in _handle_exception_no_connection
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) operator does not exist: uuid = character varying
+[SQL: UPDATE tasks SET status = $1::VARCHAR, updated_at = $2::TIMESTAMP WITH TIME ZONE, error_message = $3::VARCHAR WHERE id = $4::VARCHAR]
+[parameters: ('failed', datetime.datetime(2026, 10, 24, 8, 8, 51, 404171, tzinfo=datetime.timezone.utc), "(sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) operator does not exist: uuid = character varying\n[SQL: UPDATE tasks SET status = $1::VARC ... (135 characters truncated) ...  8, 51, 350085, tzinfo=datetime.timezone.utc), '0753af1c-cb33-45dc-8bfc-fbba36695e79')]\n(Background on this error at: https://sqlalche.me/e/21/f405)", '0753af1c-cb33-45dc-8bfc-fbba36695e79')]
+(Background on this error at: https://sqlalche.me/e/21/f405)
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59428 - "GET /status/0753af1c-cb33-45dc-8bfc-fbba36695e79 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [7892]
+INFO:     Started server process [22421]
+INFO:     Waiting for application startup.
+2026-10-24 14:47:19,816 INFO app.main — Orchestrator ready — model=llama3.2 ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60491 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [22421]

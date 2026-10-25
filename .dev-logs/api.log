@@ -42,3 +42,71 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 INFO:     127.0.0.1:53881 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2026-10-24 12:33:42,525 INFO app.main — Shutting down AI Agent Platform API
+2026-10-24 12:33:42,564 INFO app.database — Database engine disposed
+INFO:     Application shutdown complete.
+INFO:     Finished server process [87439]
+INFO:     Started server process [91264]
+INFO:     Waiting for application startup.
+2026-10-24 12:33:44,294 INFO app.main — Starting AI Agent Platform API (debug=True)
+2026-10-24 12:33:44,315 INFO app.database — Database engine created
+2026-10-24 12:33:44,327 INFO app.main — Startup complete
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:55677 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2026-10-24 13:25:48,376 INFO app.main — Shutting down AI Agent Platform API
+2026-10-24 13:25:48,406 INFO app.database — Database engine disposed
+INFO:     Application shutdown complete.
+INFO:     Finished server process [91264]
+INFO:     Started server process [5277]
+INFO:     Waiting for application startup.
+2026-10-24 13:25:50,928 INFO app.main — Starting AI Agent Platform API (debug=True)
+2026-10-24 13:25:50,949 INFO app.database — Database engine created
+2026-10-24 13:25:51,015 INFO app.publisher — RabbitMQ publisher connected
+2026-10-24 13:25:51,015 INFO app.main — Startup complete
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59102 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2026-10-24 13:32:34,269 INFO app.main — Shutting down AI Agent Platform API
+2026-10-24 13:32:34,271 INFO app.database — Database engine disposed
+INFO:     Application shutdown complete.
+INFO:     Finished server process [5277]
+INFO:     Started server process [7893]
+INFO:     Waiting for application startup.
+2026-10-24 13:32:36,276 INFO app.main — Starting AI Agent Platform API (debug=True)
+2026-10-24 13:32:36,302 INFO app.database — Database engine created
+2026-10-24 13:32:36,329 INFO app.publisher — RabbitMQ publisher connected
+2026-10-24 13:32:36,329 INFO app.main — Startup complete
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-10-24 14:17:29,954 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10dfeb980> was stuck. No frames were received in 183 seconds.
+2026-10-24 14:17:29,972 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-10-24 14:33:01,691 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10e248960> was stuck. No frames were received in 183 seconds.
+2026-10-24 14:33:01,693 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2026-10-24 14:47:17,082 INFO app.main — Shutting down AI Agent Platform API
+2026-10-24 14:47:17,093 INFO app.database — Database engine disposed
+INFO:     Application shutdown complete.
+INFO:     Finished server process [7893]
+INFO:     Started server process [22422]
+INFO:     Waiting for application startup.
+2026-10-24 14:47:19,604 INFO app.main — Starting AI Agent Platform API (debug=True)
+2026-10-24 14:47:19,634 INFO app.database — Database engine created
+2026-10-24 14:47:19,661 INFO app.publisher — RabbitMQ publisher connected
+2026-10-24 14:47:19,661 INFO app.main — Startup complete
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60489 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2026-10-24 15:49:13,501 INFO app.main — Shutting down AI Agent Platform API
+2026-10-24 15:49:13,618 INFO app.database — Database engine disposed
+INFO:     Application shutdown complete.
+INFO:     Finished server process [22422]

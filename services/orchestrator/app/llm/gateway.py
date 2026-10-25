@@ -52,9 +52,7 @@ class LLMGateway:
         }
 
         async with httpx.AsyncClient(timeout=self._timeout) as client:
-            resp = client.post(f"{self._base_url}/api/chat", json=payload)
-            # httpx raises on 4xx/5xx
-            resp = await resp  # type: ignore[assignment]
+            resp = await client.post(f"{self._base_url}/api/chat", json=payload)
             resp.raise_for_status()
 
         data = resp.json()
