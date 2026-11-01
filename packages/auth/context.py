@@ -90,7 +90,7 @@ def build_user_context(claims: JWTClaims) -> UserContext:
         return UserContext(
             user_id=claims.sub,
             tenant_id=get_tenant_id(claims),
-            email=claims.email,
+            email=claims.get_email(),
             role=_resolve_role(claims.role),
             is_active=True,
         )

@@ -61,7 +61,9 @@ class Settings(BaseSettings):
     otel_service_name: str = Field("ai-agent-api")
 
     # ── Internal services ─────────────────────────────────────────────
-    orchestrator_url: str = Field("http://orchestrator:8001")
+    orchestrator_url: str = Field("http://localhost:8001")
+    knowledge_url: str = Field("http://localhost:8002")
+    graph_memory_url: str = Field("http://localhost:8003")
 
     @property
     def cors_origins_list(self) -> list[str]:

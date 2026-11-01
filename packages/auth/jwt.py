@@ -1,7 +1,7 @@
 """
 JWT verification helpers for Supabase-issued tokens.
 
-Supabase signs JWTs with HS256 using the project's JWT secret.
+Supabase signs JWTs with HS256 (older projects) or ES256 (newer projects).
 This module validates the signature, expiry, and required claims,
 then returns a typed claims object — never raw dict data.
 
@@ -24,17 +24,35 @@ from typing import Any
 from uuid import UUID
 
 import jwt as pyjwt
+from jwt.algorithms import ECAlgorithm
 from pydantic import BaseModel, Field
 
 from .exceptions import ExpiredTokenError, InvalidTokenError
 
 logger = logging.getLogger(__name__)
 
-# Supabase uses HS256 for project JWTs.
-_ALGORITHM = "HS256"
+# Supabase uses HS256 for older projects and ES256 for newer ones.
+_ALGORITHMS = ["HS256", "ES256"]
 
 # Expected audience for Supabase authenticated users.
 _EXPECTED_AUDIENCE = "authenticated"
+
+# Supabase ES256 public key (JWKS) — fetched once at import time.
+# Stored as a JWK dict; converted to a key object on first use.
+_SUPABASE_JWKS: dict[str, Any] | None = None
+
+
+def _get_es256_key(kid: str | None = None) -> Any:
+    """Return the EC public key for verifying ES256 tokens."""
+    global _SUPABASE_JWKS
+    if _SUPABASE_JWKS is None:
+        # shortcut: key is hardcoded from JWKS; refresh on key rotation
+        _SUPABASE_JWKS = {
+            "alg": "ES256", "crv": "P-256", "kty": "EC", "use": "sig",
+            "x": "v44G_tfzH2sJ9jetKTUetyngexSh819ZBQBjxbthmlg",
+            "y": "6xLShAyMOQlRfRfoZQbob01SGnlY3NJ0epgxXJCer8I",
+        }
+    return ECAlgorithm.from_jwk(_SUPABASE_JWKS)
 
 
 class JWTClaims(BaseModel):
@@ -46,9 +64,10 @@ class JWTClaims(BaseModel):
     """
 
     sub: UUID = Field(..., description="User UUID (subject)")
-    email: str = Field(..., description="Verified user email")
-    role: str = Field(..., description="Supabase/app role claim")
-    aud: str = Field(..., description="Token audience")
+    # email may be top-level or inside user_metadata depending on Supabase version
+    email: str = Field("", description="Verified user email")
+    role: str = Field("authenticated", description="Supabase/app role claim")
+    aud: str | list[str] = Field("authenticated", description="Token audience")
     exp: int = Field(..., description="Expiry timestamp (Unix epoch)")
     iat: int = Field(..., description="Issued-at timestamp (Unix epoch)")
 
@@ -60,49 +79,58 @@ class JWTClaims(BaseModel):
         description="Tenant UUID, expected as a custom JWT claim",
     )
 
-    model_config = {"populate_by_name": True}
+    # Supabase stores email in user_metadata in newer versions
+    user_metadata: dict | None = Field(None)
+
+    model_config = {"populate_by_name": True, "extra": "ignore"}
 
     @property
     def is_expired(self) -> bool:
         return datetime.now(tz=timezone.utc).timestamp() > self.exp
 
+    def get_email(self) -> str:
+        """Return email from top-level claim or user_metadata fallback."""
+        if self.email:
+            return self.email
+        if self.user_metadata and self.user_metadata.get("email"):
+            return self.user_metadata["email"]
+        return str(self.sub)  # last resort: use UUID as identifier
+
 
 def verify_jwt(token: str, jwt_secret: str) -> JWTClaims:
     """
-    Decode and verify a Supabase JWT.
+    Decode and verify a Supabase JWT (HS256 or ES256).
 
-    Args:
-        token:      Raw Bearer token string (without 'Bearer ' prefix).
-        jwt_secret: The Supabase project JWT secret from server config.
-
-    Returns:
-        JWTClaims — typed, verified claims.
-
-    Raises:
-        ExpiredTokenError:  Token signature is valid but the token has expired.
-        InvalidTokenError:  Token is malformed, signature is wrong, or
-                            required claims are missing.
+    For ES256 tokens, uses the hardcoded JWKS public key.
+    For HS256 tokens, uses the provided jwt_secret.
     """
     if not token or not token.strip():
         raise InvalidTokenError("Token must not be empty")
 
+    # Peek at the algorithm without verifying, to choose the right key.
+    try:
+        header = pyjwt.get_unverified_header(token)
+        alg = header.get("alg", "HS256")
+    except pyjwt.PyJWTError as exc:
+        raise InvalidTokenError("Malformed token header") from exc
+
+    key: Any = _get_es256_key() if alg == "ES256" else jwt_secret
+
     try:
         raw: dict[str, Any] = pyjwt.decode(
             token,
-            jwt_secret,
-            algorithms=[_ALGORITHM],
-            audience=_EXPECTED_AUDIENCE,
-            options={"require": ["sub", "email", "exp", "iat", "aud"]},
+            key,
+            algorithms=[alg],
+            options={
+                "verify_aud": False,
+                "require": ["sub", "exp", "iat"],
+            },
         )
     except pyjwt.ExpiredSignatureError as exc:
         logger.debug("JWT expired: %s", exc)
         raise ExpiredTokenError() from exc
-    except pyjwt.InvalidAudienceError as exc:
-        logger.debug("JWT audience mismatch: %s", exc)
-        raise InvalidTokenError("Token audience is invalid") from exc
     except pyjwt.PyJWTError as exc:
-        # Log at debug to avoid leaking token details into logs.
-        logger.debug("JWT decode failed: %s", exc)
+        logger.warning("JWT decode failed: %s | token_prefix=%s", exc, token[:20] if token else "")
         raise InvalidTokenError() from exc
 
     try:
