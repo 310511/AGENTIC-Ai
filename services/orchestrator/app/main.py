@@ -118,10 +118,19 @@ async def _set_task_status(
 
 def update_stmt(task_id: str, values: dict):
     """Build a SQLAlchemy core update for the tasks table."""
+    import json as _json
     from sqlalchemy import text
-    set_parts = ", ".join(f"{k} = :{k}" for k in values)
+    set_parts = []
+    for k in values:
+        if k == "result":
+            values[k] = _json.dumps(values[k]) if isinstance(values[k], dict) else values[k]
+            set_parts.append(f"{k} = CAST(:{k} AS jsonb)")
+        elif k == "status":
+            set_parts.append(f"{k} = CAST(:{k} AS task_status)")
+        else:
+            set_parts.append(f"{k} = :{k}")
     return text(
-        f"UPDATE tasks SET {set_parts} WHERE id = :task_id"
+        f"UPDATE tasks SET {', '.join(set_parts)} WHERE id = CAST(:task_id AS uuid)"
     ).bindparams(**values, task_id=task_id)
 
 
@@ -151,14 +160,19 @@ async def _run_workflow(req: RunRequest) -> None:
             req.tenant_id, f"{req.title} {req.description}"
         )
 
+        # Fetch available MCP tools so the plan node knows what actions are possible.
+        # Non-fatal: empty list if MCP manager is unavailable.
+        available_tools = await _mcp.list_tools()
+
         initial_state = {
-            "task_id":       task_id,
-            "tenant_id":     req.tenant_id,
-            "title":         req.title,
-            "description":   req.description,
-            "context":       context,
-            "graph_context": graph_context,
-            "retries":       0,
+            "task_id":         task_id,
+            "tenant_id":       req.tenant_id,
+            "title":           req.title,
+            "description":     req.description,
+            "context":         context,
+            "graph_context":   graph_context,
+            "available_tools": available_tools,
+            "retries":         0,
         }
 
         final_state = await _workflow.ainvoke(initial_state)  # type: ignore[union-attr]
@@ -204,7 +218,7 @@ async def task_status(task_id: str):
     from sqlalchemy import text as _text
     async with _session_factory() as session:
         row = (await session.execute(
-            _text("SELECT id, status, result, error_message, updated_at FROM tasks WHERE id = :id"),
+            _text("SELECT id, status, result, error_message, updated_at FROM tasks WHERE id = CAST(:id AS uuid)"),
             {"id": task_id},
         )).mappings().one_or_none()
     if row is None:

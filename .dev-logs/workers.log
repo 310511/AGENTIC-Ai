@@ -458,3 +458,39 @@ AttributeError: 'Channel' object has no attribute 'default_exchange'
 2026-11-02 19:49:45,589 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
 2026-11-02 19:49:45,589 INFO app.runner — Task a601c300-b9f9-480c-b991-ff40e5f36903 accepted by orchestrator (attempt 1)
 2026-11-02 19:49:45,589 INFO __main__ — Task a601c300-b9f9-480c-b991-ff40e5f36903 succeeded on attempt 1
+2026-11-03 20:12:16,055 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-03 20:12:16,289 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-03 20:12:16,292 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-03 20:16:21,663 INFO __main__ — Received task_id=adb73c4a-8c60-43a3-9e71-9977d1ec68ae attempt=1
+2026-11-03 20:16:21,664 INFO app.runner — Worker attempt=1 task_id=adb73c4a-8c60-43a3-9e71-9977d1ec68ae
+2026-11-03 20:16:21,708 INFO __main__ — Worker shut down cleanly
+2026-11-03 20:16:21,743 ERROR app.runner — DB status update failed for adb73c4a-8c60-43a3-9e71-9977d1ec68ae: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near ":"
+[SQL: UPDATE tasks SET status = $1, updated_at = $2 WHERE id = :task_id::uuid]
+[parameters: ('in_progress', datetime.datetime(2026, 11, 3, 14, 46, 21, 664483, tzinfo=datetime.timezone.utc))]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2026-11-03 20:16:21,799 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
+2026-11-03 20:16:21,800 INFO app.runner — Task adb73c4a-8c60-43a3-9e71-9977d1ec68ae accepted by orchestrator (attempt 1)
+2026-11-03 20:16:21,800 INFO __main__ — Task adb73c4a-8c60-43a3-9e71-9977d1ec68ae succeeded on attempt 1
+2026-11-03 20:20:28,806 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-03 20:20:28,845 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-03 20:20:28,846 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-03 20:21:49,497 INFO __main__ — Received task_id=a0916d6d-0854-4404-b31c-148c657eacaf attempt=1
+2026-11-03 20:21:49,497 INFO app.runner — Worker attempt=1 task_id=a0916d6d-0854-4404-b31c-148c657eacaf
+2026-11-03 20:21:49,503 INFO __main__ — Worker shut down cleanly
+2026-11-03 20:21:49,609 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
+2026-11-03 20:21:49,610 INFO app.runner — Task a0916d6d-0854-4404-b31c-148c657eacaf accepted by orchestrator (attempt 1)
+2026-11-03 20:21:49,610 INFO __main__ — Task a0916d6d-0854-4404-b31c-148c657eacaf succeeded on attempt 1
+2026-11-03 20:25:42,389 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-03 20:25:42,441 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-03 20:25:42,441 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-03 20:27:31,384 INFO __main__ — Received task_id=b8db2591-131f-4317-b277-d8e6e49bef7d attempt=1
+2026-11-03 20:27:31,385 INFO app.runner — Worker attempt=1 task_id=b8db2591-131f-4317-b277-d8e6e49bef7d
+2026-11-03 20:27:31,390 INFO __main__ — Worker shut down cleanly
+2026-11-03 20:27:31,487 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
+2026-11-03 20:27:31,487 INFO app.runner — Task b8db2591-131f-4317-b277-d8e6e49bef7d accepted by orchestrator (attempt 1)
+2026-11-03 20:27:31,488 INFO __main__ — Task b8db2591-131f-4317-b277-d8e6e49bef7d succeeded on attempt 1
+2026-11-03 20:29:39,339 INFO __main__ — Received task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386 attempt=1
+2026-11-03 20:29:39,344 INFO app.runner — Worker attempt=1 task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386
+2026-11-03 20:29:39,520 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
+2026-11-03 20:29:39,520 INFO app.runner — Task 7cdcdc6a-53de-4869-b5d3-600bb54bd386 accepted by orchestrator (attempt 1)
+2026-11-03 20:29:39,520 INFO __main__ — Task 7cdcdc6a-53de-4869-b5d3-600bb54bd386 succeeded on attempt 1

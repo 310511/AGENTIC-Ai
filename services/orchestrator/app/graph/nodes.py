@@ -26,20 +26,34 @@ async def plan_node(state: TaskState, llm: LLMGateway) -> dict:
     try:
         context_section = ""
         if state.get("context"):
-            context_section += f"\n\nRelevant context retrieved from the knowledge base:\n{state['context']}\n"
+            context_section += f"\n\nRelevant context from knowledge base:\n{state['context']}\n"
         if state.get("graph_context"):
-            context_section += f"\n\nRelevant entities from graph memory:\n{state['graph_context']}\n"
+            context_section += f"\n\nRelevant entities from memory:\n{state['graph_context']}\n"
+
+        # Build tool catalogue so the LLM knows exactly what it can call.
+        tools = state.get("available_tools") or []
+        if tools:
+            tool_lines = "\n".join(
+                f"  - {t['server_name']}/{t['tool_name']}: {t.get('description','')}"
+                for t in tools
+            )
+            tools_section = f"\n\nAvailable tools (use TOOL: syntax to call them):\n{tool_lines}\n"
+        else:
+            tools_section = ""
+
         resp = await llm.chat(
             system=(
-                "You are a precise AI planning assistant. "
-                "Given a task, output ONLY a numbered list of concrete steps to complete it. "
-                "If a step requires fetching external data, prefix it with "
-                "'TOOL: <server>/<tool_name> {\"arg\": \"value\"}' on its own line. "
+                "You are a precise AI planning assistant that can use tools to complete tasks. "
+                "Given a task, output ONLY a numbered list of concrete steps. "
+                "When a step needs external data or an action, use this exact format on its own line:\n"
+                "  TOOL: <server_name>/<tool_name> {\"arg_name\": \"value\"}\n"
+                "Use the tools listed below — do not invent tool names. "
                 "No preamble, no explanation after the list."
             ),
             user=(
                 f"Task: {state['title']}\n\n"
                 f"Description: {state['description']}"
+                f"{tools_section}"
                 f"{context_section}"
             ),
         )

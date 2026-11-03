@@ -25,6 +25,9 @@ class TaskState(TypedDict, total=False):
     # Produced by the plan node
     plan: str
 
+    # Available MCP tools (fetched before planning so the LLM knows what it can use)
+    available_tools: list
+
     # Produced by the execute node
     result: str
 

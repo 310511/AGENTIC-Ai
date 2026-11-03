@@ -33,12 +33,12 @@ async def set_task_status(
         "updated_at": datetime.now(tz=timezone.utc),
         "task_id":    task_id,
     }
-    set_parts = ["status = :status", "updated_at = :updated_at"]
+    set_parts = ["status = CAST(:status AS task_status)", "updated_at = :updated_at"]
 
     if result is not None:
         import json
         values["result"] = json.dumps(result)
-        set_parts.append("result = :result::jsonb")
+        set_parts.append("result = CAST(:result AS jsonb)")
     if error_message is not None:
         values["error_message"] = error_message
         set_parts.append("error_message = :error_message")
@@ -48,7 +48,7 @@ async def set_task_status(
 
     async with session_factory() as session:
         await session.execute(
-            text(f"UPDATE tasks SET {', '.join(set_parts)} WHERE id = :task_id"),
+            text(f"UPDATE tasks SET {', '.join(set_parts)} WHERE id = CAST(:task_id AS uuid)"),
             values,
         )
         await session.commit()

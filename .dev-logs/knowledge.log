@@ -646,3 +646,5 @@ INFO:     Uvicorn running on http://0.0.0.0:8002 (Press CTRL+C to quit)
 INFO:     127.0.0.1:52053 - "GET /health HTTP/1.1" 200 OK
 2026-11-01 13:43:56,433 INFO app.main — Ingested document_id=234567890- tenant=607413ef-2059-44f7-afeb-82e845acee61 chunks=1
 INFO:     127.0.0.1:53942 - "POST /ingest HTTP/1.1" 201 Created
+INFO:     127.0.0.1:62926 - "POST /retrieve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63733 - "POST /retrieve HTTP/1.1" 200 OK

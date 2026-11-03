@@ -1156,3 +1156,453 @@ sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.Program
 [SQL: UPDATE tasks SET status = $1::VARCHAR, updated_at = $2::TIMESTAMP WITH TIME ZONE, error_message = $3::VARCHAR WHERE id = $4::VARCHAR]
 [parameters: ('failed', datetime.datetime(2026, 11, 2, 14, 19, 45, 777437, tzinfo=datetime.timezone.utc), "(sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) operator does not exist: uuid = character varying\n[SQL: UPDATE tasks SET status = $1::VARC ... (136 characters truncated) ... 19, 45, 589132, tzinfo=datetime.timezone.utc), 'a601c300-b9f9-480c-b991-ff40e5f36903')]\n(Background on this error at: https://sqlalche.me/e/21/f405)", 'a601c300-b9f9-480c-b991-ff40e5f36903')]
 (Background on this error at: https://sqlalche.me/e/21/f405)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [51213]
+INFO:     Started server process [52526]
+INFO:     Waiting for application startup.
+2026-11-03 20:12:16,847 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:57312 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58761 - "POST /run HTTP/1.1" 202 Accepted
+2026-11-03 20:16:21,801 ERROR app.main — Unhandled error in workflow for task adb73c4a-8c60-43a3-9e71-9977d1ec68ae
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 2715, in bindparams
+    existing = new_params[key]
+               ~~~~~~~~~~^^^^^
+KeyError: 'task_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 139, in _run_workflow
+    await _set_task_status(task_id, _STATUS_IN_PROGRESS)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 114, in _set_task_status
+    update_stmt(task_id, values)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 123, in update_stmt
+    return text(
+           ^^^^^
+  File "<sqlalchemy generated _generative() wrapper for sqlalchemy.sql.elements.TextClause.bindparams>", line 2, in bindparams
+    return target(fn, self, *binds, **names_to_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/base.py", line 296, in _generative
+    x = fn(self, *args, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 2717, in bindparams
+    raise exc.ArgumentError(
+sqlalchemy.exc.ArgumentError: This text() construct doesn't define a bound parameter named 'task_id'
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 2715, in bindparams
+    existing = new_params[key]
+               ~~~~~~~~~~^^^^^
+KeyError: 'task_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 139, in _run_workflow
+    await _set_task_status(task_id, _STATUS_IN_PROGRESS)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 114, in _set_task_status
+    update_stmt(task_id, values)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 123, in update_stmt
+    return text(
+           ^^^^^
+  File "<sqlalchemy generated _generative() wrapper for sqlalchemy.sql.elements.TextClause.bindparams>", line 2, in bindparams
+    return target(fn, self, *binds, **names_to_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/base.py", line 296, in _generative
+    x = fn(self, *args, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 2717, in bindparams
+    raise exc.ArgumentError(
+sqlalchemy.exc.ArgumentError: This text() construct doesn't define a bound parameter named 'task_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 2715, in bindparams
+    existing = new_params[key]
+               ~~~~~~~~~~^^^^^
+KeyError: 'task_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    await response(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/responses.py", line 162, in __call__
+    await self.background()
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/background.py", line 45, in __call__
+    await task()
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/background.py", line 28, in __call__
+    await self.func(*self.args, **self.kwargs)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 192, in _run_workflow
+    await _set_task_status(task_id, _STATUS_FAILED, error_message=str(exc))
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 114, in _set_task_status
+    update_stmt(task_id, values)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 123, in update_stmt
+    return text(
+           ^^^^^
+  File "<sqlalchemy generated _generative() wrapper for sqlalchemy.sql.elements.TextClause.bindparams>", line 2, in bindparams
+    return target(fn, self, *binds, **names_to_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/base.py", line 296, in _generative
+    x = fn(self, *args, **kw)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 2717, in bindparams
+    raise exc.ArgumentError(
+sqlalchemy.exc.ArgumentError: This text() construct doesn't define a bound parameter named 'task_id'
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [52526]
+INFO:     Started server process [55089]
+INFO:     Waiting for application startup.
+2026-11-03 20:20:29,401 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60349 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60811 - "POST /run HTTP/1.1" 202 Accepted
+2026-11-03 20:21:49,627 ERROR app.main — Unhandled error in workflow for task a0916d6d-0854-4404-b31c-148c657eacaf
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 581, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 819, in _prepare
+    prepared_stmt = await self._connection.prepare(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 661, in prepare
+    return await self._prepare(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 680, in _prepare
+    stmt = await self._get_statement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 466, in _get_statement
+    statement = await self._protocol.prepare(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 161, in prepare
+asyncpg.exceptions.DatatypeMismatchError: column "status" is of type task_status but expression is of type character varying
+HINT:  You will need to rewrite or cast the expression.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 656, in execute
+    await_(self._prepare_and_execute(operation, parameters))
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 167, in await_
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 205, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 618, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 568, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 847, in _handle_exception
+    super()._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/connectors/asyncio.py", line 412, in _handle_exception
+    self._handle_exception_no_connection(self.dbapi, error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 840, in _handle_exception_no_connection
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: column "status" is of type task_status but expression is of type character varying
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 147, in _run_workflow
+    await _set_task_status(task_id, _STATUS_IN_PROGRESS)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 112, in _set_task_status
+    await session.execute(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py", line 651, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 210, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2473, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2373, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1458, in execute
+    return meth(
+           ^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 533, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1678, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1832, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1972, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2342, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 656, in execute
+    await_(self._prepare_and_execute(operation, parameters))
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 167, in await_
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 205, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 618, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 568, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 847, in _handle_exception
+    super()._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/connectors/asyncio.py", line 412, in _handle_exception
+    self._handle_exception_no_connection(self.dbapi, error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 840, in _handle_exception_no_connection
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) column "status" is of type task_status but expression is of type character varying
+[SQL: UPDATE tasks SET status = $1::VARCHAR, updated_at = $2::TIMESTAMP WITH TIME ZONE WHERE id = CAST($3::VARCHAR AS uuid)]
+[parameters: ('in_progress', datetime.datetime(2026, 11, 3, 14, 51, 49, 609374, tzinfo=datetime.timezone.utc), 'a0916d6d-0854-4404-b31c-148c657eacaf')]
+(Background on this error at: https://sqlalche.me/e/21/f405)
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 581, in _prepare_and_execute
+    prepared_stmt, attributes = await adapt_connection._prepare(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 819, in _prepare
+    prepared_stmt = await self._connection.prepare(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 661, in prepare
+    return await self._prepare(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 680, in _prepare
+    stmt = await self._get_statement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 466, in _get_statement
+    statement = await self._protocol.prepare(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 161, in prepare
+asyncpg.exceptions.DatatypeMismatchError: column "status" is of type task_status but expression is of type character varying
+HINT:  You will need to rewrite or cast the expression.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 656, in execute
+    await_(self._prepare_and_execute(operation, parameters))
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 167, in await_
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 205, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 618, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 568, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 847, in _handle_exception
+    super()._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/connectors/asyncio.py", line 412, in _handle_exception
+    self._handle_exception_no_connection(self.dbapi, error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 840, in _handle_exception_no_connection
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: column "status" is of type task_status but expression is of type character varying
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    await response(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/responses.py", line 162, in __call__
+    await self.background()
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/background.py", line 45, in __call__
+    await task()
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/starlette/background.py", line 28, in __call__
+    await self.func(*self.args, **self.kwargs)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 200, in _run_workflow
+    await _set_task_status(task_id, _STATUS_FAILED, error_message=str(exc))
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/app/main.py", line 112, in _set_task_status
+    await session.execute(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py", line 651, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 210, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2473, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2373, in _execute_internal
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1458, in execute
+    return meth(
+           ^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 533, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1678, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1832, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1972, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2342, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 656, in execute
+    await_(self._prepare_and_execute(operation, parameters))
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 167, in await_
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py", line 205, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 618, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 568, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 847, in _handle_exception
+    super()._handle_exception(error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/connectors/asyncio.py", line 412, in _handle_exception
+    self._handle_exception_no_connection(self.dbapi, error)
+  File "/Users/utsavgautam/AIAgent/services/orchestrator/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 840, in _handle_exception_no_connection
+    raise translated_error from error
+sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) column "status" is of type task_status but expression is of type character varying
+[SQL: UPDATE tasks SET status = $1::VARCHAR, updated_at = $2::TIMESTAMP WITH TIME ZONE, error_message = $3::VARCHAR WHERE id = CAST($4::VARCHAR AS uuid)]
+[parameters: ('failed', datetime.datetime(2026, 11, 3, 14, 51, 49, 638313, tzinfo=datetime.timezone.utc), '(sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) column "status" is of type task_status but expression is of type character varying\n[SQL: U ... (187 characters truncated) ... , 49, 609374, tzinfo=datetime.timezone.utc), \'a0916d6d-0854-4404-b31c-148c657eacaf\')]\n(Background on this error at: https://sqlalche.me/e/21/f405)', 'a0916d6d-0854-4404-b31c-148c657eacaf')]
+(Background on this error at: https://sqlalche.me/e/21/f405)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [55089]
+INFO:     Started server process [57463]
+INFO:     Waiting for application startup.
+2026-11-03 20:25:43,015 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:62257 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62922 - "POST /run HTTP/1.1" 202 Accepted
+2026-11-03 20:27:33,025 INFO httpx — HTTP Request: POST http://localhost:8002/retrieve "HTTP/1.1 200 OK"
+2026-11-03 20:27:37,413 INFO httpx — HTTP Request: POST http://localhost:8003/retrieve "HTTP/1.1 200 OK"
+2026-11-03 20:27:37,424 INFO app.graph.nodes — plan_node: task_id=b8db2591-131f-4317-b277-d8e6e49bef7d
+2026-11-03 20:27:53,085 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 20:27:53,105 INFO app.graph.nodes — tool_call_node: task_id=b8db2591-131f-4317-b277-d8e6e49bef7d
+2026-11-03 20:27:53,108 INFO app.graph.nodes — execute_node: task_id=b8db2591-131f-4317-b277-d8e6e49bef7d retry=0
+2026-11-03 20:28:05,045 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 20:28:05,060 INFO app.graph.nodes — verify_node: task_id=b8db2591-131f-4317-b277-d8e6e49bef7d
+2026-11-03 20:28:06,647 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 20:28:06,969 INFO app.main — Task b8db2591-131f-4317-b277-d8e6e49bef7d completed
+2026-11-03 20:28:09,186 INFO httpx — HTTP Request: POST http://localhost:8003/store "HTTP/1.1 500 Internal Server Error"
+INFO:     127.0.0.1:63731 - "POST /run HTTP/1.1" 202 Accepted
+2026-11-03 20:29:41,036 INFO httpx — HTTP Request: POST http://localhost:8002/retrieve "HTTP/1.1 200 OK"
+2026-11-03 20:29:43,292 INFO httpx — HTTP Request: POST http://localhost:8003/retrieve "HTTP/1.1 200 OK"
+2026-11-03 20:29:43,506 INFO app.graph.nodes — plan_node: task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386
+2026-11-03 20:29:48,832 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 20:29:48,849 INFO app.graph.nodes — tool_call_node: task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386
+2026-11-03 20:29:48,854 INFO app.graph.nodes — execute_node: task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386 retry=0
+2026-11-03 20:29:49,962 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 20:29:49,963 INFO app.graph.nodes — verify_node: task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386
+2026-11-03 20:29:50,727 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 20:29:50,729 INFO app.graph.nodes — execute_node: task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386 retry=1
+2026-11-03 20:29:51,260 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 20:29:51,266 INFO app.graph.nodes — verify_node: task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386
+2026-11-03 20:29:51,881 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 20:29:51,884 INFO app.graph.nodes — execute_node: task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386 retry=2
+2026-11-03 20:29:54,773 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 20:29:54,779 INFO app.graph.nodes — verify_node: task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386
+2026-11-03 20:29:55,847 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 20:29:55,853 INFO app.graph.nodes — execute_node: task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386 retry=3
+2026-11-03 20:30:11,020 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 20:30:11,037 INFO app.graph.nodes — verify_node: task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386
+2026-11-03 20:30:11,038 WARNING app.graph.nodes — verify_node: max retries reached for task_id=7cdcdc6a-53de-4869-b5d3-600bb54bd386
+2026-11-03 20:30:11,102 INFO app.main — Task 7cdcdc6a-53de-4869-b5d3-600bb54bd386 completed
+2026-11-03 20:30:11,770 INFO httpx — HTTP Request: POST http://localhost:8003/store "HTTP/1.1 500 Internal Server Error"
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57463]

@@ -151,9 +151,9 @@ async def run_consumer(once: bool = False) -> None:
                 async for message in q:
                     if stop_event.is_set():
                         break
-                    asyncio.create_task(
-                        _process_message(message, settings, session_factory)
-                    )
+                    # Process sequentially — safe for our workload since the
+                    # orchestrator handles the actual heavy lifting async.
+                    await _process_message(message, settings, session_factory)
 
     await engine.dispose()
     logger.info("Worker shut down cleanly")
