@@ -449,3 +449,12 @@ Traceback (most recent call last):
     await channel.default_exchange.publish(
           ^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'Channel' object has no attribute 'default_exchange'
+2026-11-02 12:26:43,358 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-02 12:26:43,507 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-02 12:26:43,510 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-02 19:49:45,298 INFO __main__ — Worker shut down cleanly
+2026-11-02 19:49:45,304 INFO __main__ — Received task_id=a601c300-b9f9-480c-b991-ff40e5f36903 attempt=1
+2026-11-02 19:49:45,312 INFO app.runner — Worker attempt=1 task_id=a601c300-b9f9-480c-b991-ff40e5f36903
+2026-11-02 19:49:45,589 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
+2026-11-02 19:49:45,589 INFO app.runner — Task a601c300-b9f9-480c-b991-ff40e5f36903 accepted by orchestrator (attempt 1)
+2026-11-02 19:49:45,589 INFO __main__ — Task a601c300-b9f9-480c-b991-ff40e5f36903 succeeded on attempt 1

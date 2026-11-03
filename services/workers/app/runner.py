@@ -1,18 +1,19 @@
 """
 Task runner — delegates to the orchestrator /run endpoint.
 
-Each worker message carries a task payload. The runner:
-  1. Marks the task in_progress.
-  2. POSTs to the orchestrator /run (which drives the LangGraph workflow).
-  3. Polls /status until the task reaches a terminal state.
-  4. Handles retries with linear backoff up to max_retries.
+Design: fire-and-forget. The worker's job is to durably dequeue the
+message and trigger the orchestrator. The orchestrator owns the full
+workflow lifecycle and writes all status transitions to Postgres itself.
 
-The orchestrator already writes final status to Postgres, so the worker
-only needs to trigger it and wait — no duplicated logic.
+The worker does NOT poll for completion — that avoids the timeout race
+where a slow LLM call causes the worker to mark a task failed while the
+orchestrator is still happily running it.
+
+Retry logic (in main.py) re-queues if the orchestrator /run POST itself
+fails (network error, 503), not if the task eventually fails.
 """
 from __future__ import annotations
 
-import asyncio
 import logging
 
 import httpx
@@ -24,8 +25,6 @@ from .db import set_task_status
 logger = logging.getLogger(__name__)
 
 _TERMINAL = {"completed", "failed", "cancelled"}
-_POLL_INTERVAL = 3    # seconds between status polls
-_POLL_TIMEOUT  = 600  # seconds before giving up on a single attempt (local LLM can be slow)
 
 
 async def run_task(
@@ -35,22 +34,25 @@ async def run_task(
     attempt: int = 1,
 ) -> bool:
     """
-    Execute one task. Returns True on success, False on failure.
+    Trigger the orchestrator for one task. Returns True if the /run
+    call was accepted (202), False if it failed (network error / 5xx).
 
-    `attempt` is 1-indexed. Backoff = attempt * retry_delay_seconds.
+    Status lifecycle is owned entirely by the orchestrator — the worker
+    only marks in_progress before the trigger so the UI updates immediately.
     """
-    task_id   = payload["task_id"]
-    tenant_id = payload["tenant_id"]
-    title     = payload.get("title", "")
+    task_id     = payload["task_id"]
+    tenant_id   = payload["tenant_id"]
+    title       = payload.get("title", "")
     description = payload.get("description", "")
 
     logger.info("Worker attempt=%d task_id=%s", attempt, task_id)
 
+    # Mark in_progress immediately so the UI reflects activity.
     try:
         await set_task_status(session_factory, task_id, "in_progress")
     except Exception as exc:
         logger.error("DB status update failed for %s: %s", task_id, exc)
-        return False
+        # Non-fatal — orchestrator will set in_progress itself too.
 
     orchestrator = settings.orchestrator_url.rstrip("/")
     try:
@@ -65,31 +67,13 @@ async def run_task(
                 },
             )
             resp.raise_for_status()
+        logger.info("Task %s accepted by orchestrator (attempt %d)", task_id, attempt)
+        return True
     except Exception as exc:
         logger.error("Orchestrator /run failed for task %s: %s", task_id, exc)
-        await set_task_status(session_factory, task_id, "failed",
-                              error_message=f"Worker could not reach orchestrator: {exc}")
+        # Only mark failed if the orchestrator couldn't even accept it.
+        await set_task_status(
+            session_factory, task_id, "failed",
+            error_message=f"Could not reach orchestrator: {exc}",
+        )
         return False
-
-    # Poll orchestrator /status until terminal or timeout.
-    deadline = asyncio.get_event_loop().time() + _POLL_TIMEOUT
-    final_status = None
-    async with httpx.AsyncClient(timeout=10.0) as client:
-        while asyncio.get_event_loop().time() < deadline:
-            await asyncio.sleep(_POLL_INTERVAL)
-            try:
-                r = await client.get(f"{orchestrator}/status/{task_id}")
-                if r.status_code == 200:
-                    data = r.json()
-                    final_status = data.get("status")
-                    if final_status in _TERMINAL:
-                        logger.info("Task %s reached status=%s", task_id, final_status)
-                        return final_status == "completed"
-            except Exception as exc:
-                logger.warning("Status poll error for %s: %s", task_id, exc)
-
-    # Timed out waiting
-    logger.error("Task %s timed out after %ds (attempt %d)", task_id, _POLL_TIMEOUT, attempt)
-    await set_task_status(session_factory, task_id, "failed",
-                          error_message=f"Worker timed out after {_POLL_TIMEOUT}s")
-    return False
