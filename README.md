@@ -1,133 +1,87 @@
 # AI Agent Platform
 
-An end-to-end, modular AI agent platform using a microservices-oriented architecture.
+An end-to-end modular AI agent platform. Authenticated users submit tasks in plain English; a LangGraph-based agent plans steps, calls tools, executes, and persists results.
 
-## Architecture overview
+## What it does today
 
-```
-User / Browser
-    │
-    ▼
-Next.js + TypeScript UI
-    │
-    ▼
-Supabase Auth (identity and JWT)
-    │
-    ▼
-FastAPI API (JWT validation, RBAC, tenant isolation)
-    │
-    ▼
-Agent Orchestrator (LangGraph)
-  ├── LLM Gateway (Ollama)
-  ├── Knowledge Service (BGE + FAISS + spaCy)
-  ├── Graph Memory (Neo4j)
-  └── MCP Client Manager
-    │
-    ▼
-Policy / Approval checks
-    │
-    ▼
-Execution Service → RabbitMQ → Python workers
-```
+**One proven capability: Research & Summarize**
 
-## Repository layout
+Submit a task like "Research X and summarize it" → the agent:
+1. Searches Wikipedia via the research MCP server
+2. Fetches the article content
+3. Synthesizes a clean summary using a local LLM (Ollama)
+4. Persists the result to Postgres — visible in the UI
+
+This is a complete agentic loop: auth → queue → plan → tool use → execute → result.
+
+## Architecture
 
 ```
-/
-├── apps/
-│   └── web/                     # Next.js frontend (Phase 2)
-├── services/
-│   ├── api/                     # FastAPI entry point and routes
-│   ├── orchestrator/            # LangGraph workflows (Phase 2)
-│   ├── knowledge/               # Embeddings, FAISS, spaCy (Phase 3)
-│   ├── graph-memory/            # Neo4j access (Phase 4)
-│   ├── mcp-client-manager/      # MCP connections (Phase 5)
-│   ├── policy/                  # Authorization and approval
-│   └── workers/                 # RabbitMQ consumers (Phase 6)
-├── mcp-servers/
-│   ├── research/
-│   ├── data/
-│   └── workflow/
-├── packages/
-│   ├── contracts/               # Shared Pydantic schemas
-│   └── auth/                    # Shared JWT/tenant helpers
-├── infra/
-│   ├── docker-compose.yml
-│   └── observability/
-├── tests/
-│   ├── integration/
-│   └── security/
-├── .env.example
-└── context.md
+Browser (Next.js :3000)
+    ↓  Supabase JWT
+FastAPI API (:8000)
+    ↓  RabbitMQ queue
+Workers consumer
+    ↓  HTTP
+Orchestrator (:8001)  ←→  LangGraph workflow
+    ├── Knowledge Service (:8002)  — FAISS vector search
+    ├── Graph Memory (:8003)       — Neo4j entities
+    └── MCP Client Manager (:8004) — research server tools
+            └── research/web_search    (Wikipedia)
+            └── research/fetch_url     (any HTTPS URL)
+            └── research/summarise_text
 ```
 
-## Getting started
+## Services
 
-### Prerequisites
+| Port | Service | Status |
+|------|---------|--------|
+| 3000 | Next.js UI | ✅ |
+| 8000 | FastAPI API | ✅ |
+| 8001 | Orchestrator (LangGraph) | ✅ |
+| 8002 | Knowledge (FAISS + spaCy) | ✅ |
+| 8003 | Graph Memory (Neo4j) | ✅ |
+| 8004 | MCP Client Manager | ✅ |
+| — | RabbitMQ workers | ✅ |
 
-- Docker and Docker Compose
-- Python 3.11+
-- Node.js 20+ (for frontend, Phase 2)
-- A Supabase project (free tier works for development)
+## Start everything
 
-### 1. Clone and configure
+```zsh
+# Prerequisites (one-time)
+brew services start postgresql@16
+brew services start neo4j
+brew services start rabbitmq
+ollama serve  # runs automatically on macOS
 
-```bash
-git clone <repo-url>
-cd ai-agent-platform
-cp .env.example .env
-# Edit .env with your real Supabase credentials and secrets
+# Start all backend services
+/tmp/start_services.sh   # or recreate from dev.sh
+
+# Start frontend
+cd apps/web && npm run dev
 ```
 
-### 2. Start infrastructure
+Open http://localhost:3000 — sign in with Supabase, submit a task.
 
-```bash
-docker compose -f infra/docker-compose.yml up -d
-```
+## Environment
 
-This starts: PostgreSQL (via Supabase local or remote), Redis, Neo4j, RabbitMQ, and the API service.
+Copy `.env.example` → `.env`. Key values already set for local dev:
+- `DEFAULT_LLM_MODEL=qwen2.5-coder:3b` (fast local inference)
+- `MCP_SERVERS` — research server wired in
+- `NEO4J_PASSWORD`, `DATABASE_URL` — local Postgres + Neo4j
 
-### 3. Install API dependencies
+## Phases completed
 
-```bash
-cd services/api
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
+| Phase | Done |
+|-------|------|
+| 1 — Auth, API, infra | ✅ |
+| 2 — LangGraph orchestrator + LLM gateway | ✅ |
+| 3 — Knowledge service (FAISS + embeddings) | ✅ |
+| 4 — Graph memory (Neo4j) | ✅ |
+| 5 — MCP tool integration | ✅ |
+| 6 — RabbitMQ durable workers | ✅ |
+| Frontend (Next.js) | ✅ |
+| 7 — Production hardening | 🔲 |
 
-### 4. Run the API locally (without Docker)
+## Intended use
 
-```bash
-cd services/api
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-### 5. Check health
-
-```bash
-curl http://localhost:8000/health
-```
-
-## Implementation phases
-
-| Phase | Status | Focus |
-|-------|--------|-------|
-| 1 | ✅ In progress | Secure foundation — API, auth, infra |
-| 2 | 🔲 Planned | Agent core — LangGraph + LLM Gateway |
-| 3 | 🔲 Planned | Knowledge retrieval — BGE + FAISS + spaCy |
-| 4 | 🔲 Planned | Graph memory — Neo4j |
-| 5 | 🔲 Planned | MCP integrations |
-| 6 | 🔲 Planned | Durable execution — RabbitMQ workers |
-| 7 | 🔲 Planned | Production hardening |
-
-## Security
-
-- All protected API endpoints require a valid Supabase JWT.
-- RBAC and PostgreSQL RLS enforce role and tenant isolation.
-- Never commit `.env` or any file containing real secrets.
-- See `context.md` Section 6 for the full security requirements.
-
-## Contributing
-
-Read `context.md` before making architecture changes. Preserve the selected stack and decisions unless there is a concrete reason to change them.
+This platform is designed as a **component** in a larger AI agent system — not a general-purpose chatbot. It handles one thing well (research + summarize) and is built to extend: add MCP servers to add capabilities, ingest documents to give the agent domain knowledge, configure tools per tenant.

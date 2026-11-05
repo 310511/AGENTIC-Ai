@@ -43,12 +43,15 @@ async def plan_node(state: TaskState, llm: LLMGateway) -> dict:
 
         resp = await llm.chat(
             system=(
-                "You are a precise AI planning assistant that can use tools to complete tasks. "
-                "Given a task, output ONLY a numbered list of concrete steps. "
-                "When a step needs external data or an action, use this exact format on its own line:\n"
-                "  TOOL: <server_name>/<tool_name> {\"arg_name\": \"value\"}\n"
-                "Use the tools listed below — do not invent tool names. "
-                "No preamble, no explanation after the list."
+                "You are a precise AI planning assistant that uses tools to complete tasks.\n"
+                "Output ONLY a numbered list of steps. For each step that needs external data, "
+                "put the tool call on its own line in this exact format:\n"
+                "  TOOL: <server_name>/<tool_name> {\"arg\": \"value\"}\n\n"
+                "Rules:\n"
+                "- Use ONLY the tools listed in Available tools below\n"
+                "- For research/lookup tasks: use web_search first, then fetch_url for details\n"
+                "- Keep the plan to 3-5 steps maximum\n"
+                "- No preamble, no explanation — just the numbered steps"
             ),
             user=(
                 f"Task: {state['title']}\n\n"

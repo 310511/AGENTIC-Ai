@@ -67,3 +67,880 @@ INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
 INFO:     Finished server process [5788]
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/bin/uvicorn", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/lib/python3.12/site-packages/click/core.py", line 1631, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/lib/python3.12/site-packages/click/core.py", line 1552, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/lib/python3.12/site-packages/click/core.py", line 1415, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/lib/python3.12/site-packages/click/core.py", line 910, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/lib/python3.12/site-packages/uvicorn/main.py", line 448, in main
+    run(
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/lib/python3.12/site-packages/uvicorn/main.py", line 620, in run
+    config.load_app()
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/lib/python3.12/site-packages/uvicorn/config.py", line 434, in load_app
+    return import_from_string(self.app)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/lib/python3.12/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/app/main.py", line 34, in <module>
+    settings = get_settings()
+               ^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/app/config.py", line 64, in get_settings
+    return Settings()
+           ^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/lib/python3.12/site-packages/pydantic_settings/main.py", line 292, in __init__
+    super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/lib/python3.12/site-packages/pydantic/main.py", line 280, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+mcp_servers
+  Value error, Expecting property name enclosed in double quotes: line 1 column 3 (char 2) [type=value_error, input_value='[{name:research,command:...s/research/server.py]}]', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/value_error
+INFO:     Started server process [69115]
+INFO:     Waiting for application startup.
+2026-11-03 23:00:27,906 WARNING app.client.manager — MCP server 'research' failed to start: [Errno 2] No such file or directory
+2026-11-03 23:00:27,906 INFO app.main — MCP Client Manager ready — servers=[]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59997 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [69115]
+INFO:     Started server process [69745]
+INFO:     Waiting for application startup.
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/mcp-servers/research/server.py", line 26, in <module>
+    from mcp.server import FastMCP
+ImportError: cannot import name 'FastMCP' from 'mcp.server' (/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/lib/python3.12/site-packages/mcp/server/__init__.py)
+2026-11-03 23:01:45,658 WARNING app.client.manager — MCP server 'research' failed to start: Connection closed
+2026-11-03 23:01:45,658 INFO app.main — MCP Client Manager ready — servers=[]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60470 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [69745]
+INFO:     Started server process [70303]
+INFO:     Waiting for application startup.
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/mcp-servers/research/server.py", line 26, in <module>
+    from mcp.server.fastmcp import FastMCP
+  File "/Users/utsavgautam/AIAgent/services/mcp-client-manager/.venv/lib/python3.12/site-packages/mcp/server/fastmcp.py", line 16, in <module>
+    raise ModuleNotFoundError(_MESSAGE, name=__name__)
+ModuleNotFoundError: No module named 'mcp.server.fastmcp'. This is mcp 2.x, where FastMCP was renamed to MCPServer (from mcp.server.mcpserver import MCPServer) and other APIs changed; see the migration guide at https://py.sdk.modelcontextprotocol.io/v2/migration/#fastmcp-renamed-to-mcpserver or pin 'mcp<2' to keep running v1 code.
+2026-11-03 23:02:48,340 WARNING app.client.manager — MCP server 'research' failed to start: Connection closed
+2026-11-03 23:02:48,340 INFO app.main — MCP Client Manager ready — servers=[]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60859 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [70303]
+INFO:     Started server process [72811]
+INFO:     Waiting for application startup.
+2026-11-03 23:10:18,953 INFO app.client.manager — MCP server connected: research
+2026-11-03 23:10:18,953 INFO app.main — MCP Client Manager ready — servers=['research']
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+INFO:     127.0.0.1:63528 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64389 - "GET /tools HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65030 - "GET /tools HTTP/1.1" 200 OK
+[11/03/26 23:14:57] ERROR    Tool 'fetch_url' raised an unexpected server.py:455
+                             exception                                          
+                             ╭─ Traceback (most recent call last─╮              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpx/_tr │              
+                             │ ansports/default.py:69 in         │              
+                             │ map_httpcore_exceptions           │              
+                             │                                   │              
+                             │    66 @contextlib.contextmanager  │              
+                             │    67 def map_httpcore_exceptions │              
+                             │    68 │   try:                    │              
+                             │ ❱  69 │   │   yield               │              
+                             │    70 │   except Exception as exc │              
+                             │    71 │   │   mapped_exc = None   │              
+                             │    72                             │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpx/_tr │              
+                             │ ansports/default.py:373 in        │              
+                             │ handle_async_request              │              
+                             │                                   │              
+                             │   370 │   │   │   extensions=requ │              
+                             │   371 │   │   )                   │              
+                             │   372 │   │   with map_httpcore_e │              
+                             │ ❱ 373 │   │   │   resp = await se │              
+                             │   374 │   │                       │              
+                             │   375 │   │   assert isinstance(r │              
+                             │   376                             │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpcore/ │              
+                             │ _async/connection_pool.py:256 in  │              
+                             │ handle_async_request              │              
+                             │                                   │              
+                             │   253 │   │   │   │   closing = s │              
+                             │   254 │   │   │                   │              
+                             │   255 │   │   │   await self._clo │              
+                             │ ❱ 256 │   │   │   raise exc from  │              
+                             │   257 │   │                       │              
+                             │   258 │   │   # Return the respon │              
+                             │   259 │   │   # the point at whic │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpcore/ │              
+                             │ _async/connection_pool.py:236 in  │              
+                             │ handle_async_request              │              
+                             │                                   │              
+                             │   233 │   │   │   │               │              
+                             │   234 │   │   │   │   try:        │              
+                             │   235 │   │   │   │   │   # Send  │              
+                             │ ❱ 236 │   │   │   │   │   respons │              
+                             │   237 │   │   │   │   │   │   poo │              
+                             │   238 │   │   │   │   │   )       │              
+                             │   239 │   │   │   │   except Conn │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpcore/ │              
+                             │ _async/connection.py:101 in       │              
+                             │ handle_async_request              │              
+                             │                                   │              
+                             │    98 │   │   │   │   │   │   )   │              
+                             │    99 │   │   except BaseExceptio │              
+                             │   100 │   │   │   self._connect_f │              
+                             │ ❱ 101 │   │   │   raise exc       │              
+                             │   102 │   │                       │              
+                             │   103 │   │   return await self._ │              
+                             │   104                             │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpcore/ │              
+                             │ _async/connection.py:78 in        │              
+                             │ handle_async_request              │              
+                             │                                   │              
+                             │    75 │   │   try:                │              
+                             │    76 │   │   │   async with self │              
+                             │    77 │   │   │   │   if self._co │              
+                             │ ❱  78 │   │   │   │   │   stream  │              
+                             │    79 │   │   │   │   │           │              
+                             │    80 │   │   │   │   │   ssl_obj │              
+                             │    81 │   │   │   │   │   http2_n │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpcore/ │              
+                             │ _async/connection.py:124 in       │              
+                             │ _connect                          │              
+                             │                                   │              
+                             │   121 │   │   │   │   │   │   "so │              
+                             │   122 │   │   │   │   │   }       │              
+                             │   123 │   │   │   │   │   async w │              
+                             │ ❱ 124 │   │   │   │   │   │   str │              
+                             │   125 │   │   │   │   │   │   tra │              
+                             │   126 │   │   │   │   else:       │              
+                             │   127 │   │   │   │   │   kwargs  │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpcore/ │              
+                             │ _backends/auto.py:31 in           │              
+                             │ connect_tcp                       │              
+                             │                                   │              
+                             │   28 │   │   socket_options: typi │              
+                             │   29 │   ) -> AsyncNetworkStream: │              
+                             │   30 │   │   await self._init_bac │              
+                             │ ❱ 31 │   │   return await self._b │              
+                             │   32 │   │   │   host,            │              
+                             │   33 │   │   │   port,            │              
+                             │   34 │   │   │   timeout=timeout, │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpcore/ │              
+                             │ _backends/anyio.py:113 in         │              
+                             │ connect_tcp                       │              
+                             │                                   │              
+                             │   110 │   │   │   OSError: Connec │              
+                             │   111 │   │   │   anyio.BrokenRes │              
+                             │   112 │   │   }                   │              
+                             │ ❱ 113 │   │   with map_exceptions │              
+                             │   114 │   │   │   with anyio.fail │              
+                             │   115 │   │   │   │   stream: any │              
+                             │   116 │   │   │   │   │   remote_ │              
+                             │                                   │              
+                             │ /opt/homebrew/Cellar/python@3.12/ │              
+                             │ 3.12.15/Frameworks/Python.framewo │              
+                             │ rk/Versions/3.12/lib/python3.12/c │              
+                             │ ontextlib.py:158 in __exit__      │              
+                             │                                   │              
+                             │   155 │   │   │   │   # tell if w │              
+                             │   156 │   │   │   │   value = typ │              
+                             │   157 │   │   │   try:            │              
+                             │ ❱ 158 │   │   │   │   self.gen.th │              
+                             │   159 │   │   │   except StopIter │              
+                             │   160 │   │   │   │   # Suppress  │              
+                             │   161 │   │   │   │   # was passe │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpcore/ │              
+                             │ _exceptions.py:14 in              │              
+                             │ map_exceptions                    │              
+                             │                                   │              
+                             │   11 │   except Exception as exc: │              
+                             │   12 │   │   for from_exc, to_exc │              
+                             │   13 │   │   │   if isinstance(ex │              
+                             │ ❱ 14 │   │   │   │   raise to_exc │              
+                             │   15 │   │   raise  # pragma: noc │              
+                             │   16                              │              
+                             │   17                              │              
+                             ╰───────────────────────────────────╯              
+                             ConnectError: [Errno 8] nodename nor               
+                             servname provided, or not known                    
+                                                                                
+                             The above exception was the direct                 
+                             cause of the following exception:                  
+                                                                                
+                             ╭─ Traceback (most recent call last─╮              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/tools/base.py:179 in  │              
+                             │ run                               │              
+                             │                                   │              
+                             │   176 │   │   │   │   │   return  │              
+                             │       else resolved               │              
+                             │   177 │   │   │   │   pass_direct │              
+                             │   178 │   │   │                   │              
+                             │ ❱ 179 │   │   │   result = await  │              
+                             │       pass_directly)              │              
+                             │   180 │   │   │                   │              
+                             │   181 │   │   │   # Registration  │              
+                             │   182 │   │   │   # a body that r │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/utilities/func_metada │              
+                             │ ta.py:163 in call_fn              │              
+                             │                                   │              
+                             │   160 │   │   """                 │              
+                             │   161 │   │   kwargs = arguments  │              
+                             │   162 │   │   if fn_is_async:     │              
+                             │ ❱ 163 │   │   │   return await fn │              
+                             │   164 │   │   return await anyio. │              
+                             │   165 │                           │              
+                             │   166 │   @deprecated(            │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/mcp-se │              
+                             │ rvers/research/server.py:65 in    │              
+                             │ fetch_url                         │              
+                             │                                   │              
+                             │   62 │   │   )                    │              
+                             │   63 │                            │              
+                             │   64 │   async with httpx.AsyncCl │              
+                             │      client:                      │              
+                             │ ❱ 65 │   │   resp = await client. │              
+                             │   66 │   │   resp.raise_for_statu │              
+                             │   67 │   │   # Strip basic HTML t │              
+                             │   68 │   │   text = re.sub(r"<[^> │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpx/_cl │              
+                             │ ient.py:1801 in get               │              
+                             │                                   │              
+                             │   1798 │   │                      │              
+                             │   1799 │   │   **Parameters**: Se │              
+                             │   1800 │   │   """                │              
+                             │ ❱ 1801 │   │   return await self. │              
+                             │   1802 │   │   │   "GET",         │              
+                             │   1803 │   │   │   url,           │              
+                             │   1804 │   │   │   params=params, │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpx/_cl │              
+                             │ ient.py:1574 in request           │              
+                             │                                   │              
+                             │   1571 │   │   │   timeout=timeou │              
+                             │   1572 │   │   │   extensions=ext │              
+                             │   1573 │   │   )                  │              
+                             │ ❱ 1574 │   │   return await self. │              
+                             │   1575 │                          │              
+                             │   1576 │   @asynccontextmanager   │              
+                             │   1577 │   async def stream(      │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpx/_cl │              
+                             │ ient.py:1661 in send              │              
+                             │                                   │              
+                             │   1658 │   │                      │              
+                             │   1659 │   │   auth = self._build │              
+                             │   1660 │   │                      │              
+                             │ ❱ 1661 │   │   response = await s │              
+                             │   1662 │   │   │   request,       │              
+                             │   1663 │   │   │   auth=auth,     │              
+                             │   1664 │   │   │   follow_redirec │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpx/_cl │              
+                             │ ient.py:1689 in                   │              
+                             │ _send_handling_auth               │              
+                             │                                   │              
+                             │   1686 │   │   │   request = awai │              
+                             │   1687 │   │   │                  │              
+                             │   1688 │   │   │   while True:    │              
+                             │ ❱ 1689 │   │   │   │   response = │              
+                             │   1690 │   │   │   │   │   reques │              
+                             │   1691 │   │   │   │   │   follow │              
+                             │   1692 │   │   │   │   │   histor │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpx/_cl │              
+                             │ ient.py:1726 in                   │              
+                             │ _send_handling_redirects          │              
+                             │                                   │              
+                             │   1723 │   │   │   for hook in se │              
+                             │   1724 │   │   │   │   await hook │              
+                             │   1725 │   │   │                  │              
+                             │ ❱ 1726 │   │   │   response = awa │              
+                             │   1727 │   │   │   try:           │              
+                             │   1728 │   │   │   │   for hook i │              
+                             │   1729 │   │   │   │   │   await  │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpx/_cl │              
+                             │ ient.py:1763 in                   │              
+                             │ _send_single_request              │              
+                             │                                   │              
+                             │   1760 │   │   │   )              │              
+                             │   1761 │   │                      │              
+                             │   1762 │   │   with request_conte │              
+                             │ ❱ 1763 │   │   │   response = awa │              
+                             │   1764 │   │                      │              
+                             │   1765 │   │   assert isinstance( │              
+                             │   1766 │   │   response.request = │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpx/_tr │              
+                             │ ansports/default.py:372 in        │              
+                             │ handle_async_request              │              
+                             │                                   │              
+                             │   369 │   │   │   content=request │              
+                             │   370 │   │   │   extensions=requ │              
+                             │   371 │   │   )                   │              
+                             │ ❱ 372 │   │   with map_httpcore_e │              
+                             │   373 │   │   │   resp = await se │              
+                             │   374 │   │                       │              
+                             │   375 │   │   assert isinstance(r │              
+                             │                                   │              
+                             │ /opt/homebrew/Cellar/python@3.12/ │              
+                             │ 3.12.15/Frameworks/Python.framewo │              
+                             │ rk/Versions/3.12/lib/python3.12/c │              
+                             │ ontextlib.py:158 in __exit__      │              
+                             │                                   │              
+                             │   155 │   │   │   │   # tell if w │              
+                             │   156 │   │   │   │   value = typ │              
+                             │   157 │   │   │   try:            │              
+                             │ ❱ 158 │   │   │   │   self.gen.th │              
+                             │   159 │   │   │   except StopIter │              
+                             │   160 │   │   │   │   # Suppress  │              
+                             │   161 │   │   │   │   # was passe │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpx/_tr │              
+                             │ ansports/default.py:86 in         │              
+                             │ map_httpcore_exceptions           │              
+                             │                                   │              
+                             │    83 │   │   │   raise           │              
+                             │    84 │   │                       │              
+                             │    85 │   │   message = str(exc)  │              
+                             │ ❱  86 │   │   raise mapped_exc(me │              
+                             │    87                             │              
+                             │    88                             │              
+                             │    89 HTTPCORE_EXC_MAP = {        │              
+                             ╰───────────────────────────────────╯              
+                             ConnectError: [Errno 8] nodename nor               
+                             servname provided, or not known                    
+                                                                                
+                             The above exception was the direct                 
+                             cause of the following exception:                  
+                                                                                
+                             ╭─ Traceback (most recent call last─╮              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/server.py:442 in      │              
+                             │ _handle_call_tool                 │              
+                             │                                   │              
+                             │    439 │   ) -> CallToolResult |  │              
+                             │    440 │   │   context = Context( │              
+                             │        subscriptions=self._subscr │              
+                             │    441 │   │   try:               │              
+                             │ ❱  442 │   │   │   return await s │              
+                             │    443 │   │   except MCPError:   │              
+                             │    444 │   │   │   raise          │              
+                             │    445 │   │   except Exception a │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/server.py:548 in      │              
+                             │ call_tool                         │              
+                             │                                   │              
+                             │    545 │   │   """                │              
+                             │    546 │   │   if context is None │              
+                             │    547 │   │   │   context = Cont │              
+                             │ ❱  548 │   │   return await self. │              
+                             │        convert_result=True)       │              
+                             │    549 │                          │              
+                             │    550 │   async def list_resourc │              
+                             │    551 │   │   """List all availa │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/tools/tool_manager.py │              
+                             │ :87 in call_tool                  │              
+                             │                                   │              
+                             │   84 │   │   if not tool:         │              
+                             │   85 │   │   │   raise ToolError( │              
+                             │   86 │   │                        │              
+                             │ ❱ 87 │   │   return await tool.ru │              
+                             │   88                              │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/tools/base.py:213 in  │              
+                             │ run                               │              
+                             │                                   │              
+                             │   210 │   │   │   raise ToolError │              
+                             │   211 │   │   except Exception as │              
+                             │   212 │   │   │   # A crash: the  │              
+                             │ ❱ 213 │   │   │   raise Unexpecte │              
+                             │   214                             │              
+                             ╰───────────────────────────────────╯              
+                             UnexpectedToolError: Error executing               
+                             tool fetch_url                                     
+2026-11-03 23:14:57,864 INFO mcp.audit — tool_invocation tenant=607413ef-2059-44f7-afeb-82e845acee61 role=user server=research tool=fetch_url args=['url'] success=True error= duration_ms=947.6 ts=2026-11-03T17:44:57.864312+00:00
+INFO:     127.0.0.1:65114 - "POST /tools/invoke HTTP/1.1" 200 OK
+2026-11-03 23:14:58,071 INFO mcp.audit — tool_invocation tenant=607413ef-2059-44f7-afeb-82e845acee61 role=user server=research tool=summarise_text args=['text', 'max_sentences'] success=True error= duration_ms=199.0 ts=2026-11-03T17:44:58.071204+00:00
+INFO:     127.0.0.1:65114 - "POST /tools/invoke HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [72811]
+INFO:     Started server process [77490]
+INFO:     Waiting for application startup.
+2026-11-03 23:27:34,854 INFO app.client.manager — MCP server connected: research
+2026-11-03 23:27:34,854 INFO app.main — MCP Client Manager ready — servers=['research']
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+INFO:     127.0.0.1:53184 - "GET /tools HTTP/1.1" 200 OK
+[11/03/26 23:28:50] INFO     HTTP Request: GET                   _client.py:1773
+                             https://api.duckduckgo.com/?q=train                
+                             %20from%20Mathura%20to%20Chennai%20                
+                             31%20December%202026%203rd%20AC%20I                
+                             RCTC&format=json&no_html=1&skip_dis                
+                             ambig=1 "HTTP/1.1 202 Accepted"                    
+[11/03/26 23:28:51] INFO     HTTP Request: GET                   _client.py:1773
+                             https://html.duckduckgo.com/html/?q                
+                             =train+from+Mathura+to+Chennai+31+D                
+                             ecember+2026+3rd+AC+IRCTC "HTTP/1.1                
+                             202 Accepted"                                      
+2026-11-03 23:28:51,252 INFO mcp.audit — tool_invocation tenant=00000000-0000-0000-0000-000000000001 role=user server=research tool=web_search args=['query'] success=True error= duration_ms=703.8 ts=2026-11-03T17:58:51.252450+00:00
+INFO:     127.0.0.1:53574 - "POST /tools/invoke HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [77490]
+INFO:     Started server process [79230]
+INFO:     Waiting for application startup.
+2026-11-03 23:29:41,013 INFO app.client.manager — MCP server connected: research
+2026-11-03 23:29:41,013 INFO app.main — MCP Client Manager ready — servers=['research']
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+[11/03/26 23:29:50] INFO     HTTP Request: GET                   _client.py:1773
+                             https://en.wikipedia.org/w/api.php?                
+                             action=query&list=search&srsearch=R                
+                             ajdhani%20Express%20Chennai%20Hazra                
+                             t%20Nizamuddin%20train&srlimit=5&fo                
+                             rmat=json&utf8=1 "HTTP/1.1 403                     
+                             Forbidden"                                         
+                    ERROR    Tool 'web_search' raised an           server.py:455
+                             unexpected exception                               
+                             ╭─ Traceback (most recent call last─╮              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/tools/base.py:179 in  │              
+                             │ run                               │              
+                             │                                   │              
+                             │   176 │   │   │   │   │   return  │              
+                             │       else resolved               │              
+                             │   177 │   │   │   │   pass_direct │              
+                             │   178 │   │   │                   │              
+                             │ ❱ 179 │   │   │   result = await  │              
+                             │       pass_directly)              │              
+                             │   180 │   │   │                   │              
+                             │   181 │   │   │   # Registration  │              
+                             │   182 │   │   │   # a body that r │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/utilities/func_metada │              
+                             │ ta.py:163 in call_fn              │              
+                             │                                   │              
+                             │   160 │   │   """                 │              
+                             │   161 │   │   kwargs = arguments  │              
+                             │   162 │   │   if fn_is_async:     │              
+                             │ ❱ 163 │   │   │   return await fn │              
+                             │   164 │   │   return await anyio. │              
+                             │   165 │                           │              
+                             │   166 │   @deprecated(            │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/mcp-se │              
+                             │ rvers/research/server.py:54 in    │              
+                             │ web_search                        │              
+                             │                                   │              
+                             │    51 │   │   │   │   "utf8": "1" │              
+                             │    52 │   │   │   },              │              
+                             │    53 │   │   )                   │              
+                             │ ❱  54 │   │   data = resp.json()  │              
+                             │    55 │                           │              
+                             │    56 │   results = data.get("que │              
+                             │    57 │   if not results:         │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpx/_mo │              
+                             │ dels.py:764 in json               │              
+                             │                                   │              
+                             │    761 │   │   raise HTTPStatusEr │              
+                             │    762 │                          │              
+                             │    763 │   def json(self, **kwarg │              
+                             │ ❱  764 │   │   return jsonlib.loa │              
+                             │    765 │                          │              
+                             │    766 │   @property              │              
+                             │    767 │   def cookies(self) -> C │              
+                             │                                   │              
+                             │ /opt/homebrew/Cellar/python@3.12/ │              
+                             │ 3.12.15/Frameworks/Python.framewo │              
+                             │ rk/Versions/3.12/lib/python3.12/j │              
+                             │ son/__init__.py:346 in loads      │              
+                             │                                   │              
+                             │   343 │   if (cls is None and obj │              
+                             │   344 │   │   │   parse_int is No │              
+                             │   345 │   │   │   parse_constant  │              
+                             │ ❱ 346 │   │   return _default_dec │              
+                             │   347 │   if cls is None:         │              
+                             │   348 │   │   cls = JSONDecoder   │              
+                             │   349 │   if object_hook is not N │              
+                             │                                   │              
+                             │ /opt/homebrew/Cellar/python@3.12/ │              
+                             │ 3.12.15/Frameworks/Python.framewo │              
+                             │ rk/Versions/3.12/lib/python3.12/j │              
+                             │ son/decoder.py:338 in decode      │              
+                             │                                   │              
+                             │   335 │   │   containing a JSON d │              
+                             │   336 │   │                       │              
+                             │   337 │   │   """                 │              
+                             │ ❱ 338 │   │   obj, end = self.raw │              
+                             │   339 │   │   end = _w(s, end).en │              
+                             │   340 │   │   if end != len(s):   │              
+                             │   341 │   │   │   raise JSONDecod │              
+                             │                                   │              
+                             │ /opt/homebrew/Cellar/python@3.12/ │              
+                             │ 3.12.15/Frameworks/Python.framewo │              
+                             │ rk/Versions/3.12/lib/python3.12/j │              
+                             │ son/decoder.py:356 in raw_decode  │              
+                             │                                   │              
+                             │   353 │   │   try:                │              
+                             │   354 │   │   │   obj, end = self │              
+                             │   355 │   │   except StopIteratio │              
+                             │ ❱ 356 │   │   │   raise JSONDecod │              
+                             │   357 │   │   return obj, end     │              
+                             │   358                             │              
+                             ╰───────────────────────────────────╯              
+                             JSONDecodeError: Expecting value:                  
+                             line 1 column 1 (char 0)                           
+                                                                                
+                             The above exception was the direct                 
+                             cause of the following exception:                  
+                                                                                
+                             ╭─ Traceback (most recent call last─╮              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/server.py:442 in      │              
+                             │ _handle_call_tool                 │              
+                             │                                   │              
+                             │    439 │   ) -> CallToolResult |  │              
+                             │    440 │   │   context = Context( │              
+                             │        subscriptions=self._subscr │              
+                             │    441 │   │   try:               │              
+                             │ ❱  442 │   │   │   return await s │              
+                             │    443 │   │   except MCPError:   │              
+                             │    444 │   │   │   raise          │              
+                             │    445 │   │   except Exception a │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/server.py:548 in      │              
+                             │ call_tool                         │              
+                             │                                   │              
+                             │    545 │   │   """                │              
+                             │    546 │   │   if context is None │              
+                             │    547 │   │   │   context = Cont │              
+                             │ ❱  548 │   │   return await self. │              
+                             │        convert_result=True)       │              
+                             │    549 │                          │              
+                             │    550 │   async def list_resourc │              
+                             │    551 │   │   """List all availa │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/tools/tool_manager.py │              
+                             │ :87 in call_tool                  │              
+                             │                                   │              
+                             │   84 │   │   if not tool:         │              
+                             │   85 │   │   │   raise ToolError( │              
+                             │   86 │   │                        │              
+                             │ ❱ 87 │   │   return await tool.ru │              
+                             │   88                              │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/tools/base.py:213 in  │              
+                             │ run                               │              
+                             │                                   │              
+                             │   210 │   │   │   raise ToolError │              
+                             │   211 │   │   except Exception as │              
+                             │   212 │   │   │   # A crash: the  │              
+                             │ ❱ 213 │   │   │   raise Unexpecte │              
+                             │   214                             │              
+                             ╰───────────────────────────────────╯              
+                             UnexpectedToolError: Error executing               
+                             tool web_search                                    
+2026-11-03 23:29:50,607 INFO mcp.audit — tool_invocation tenant=00000000-0000-0000-0000-000000000001 role=user server=research tool=web_search args=['query'] success=True error= duration_ms=551.9 ts=2026-11-03T17:59:50.607531+00:00
+INFO:     127.0.0.1:53934 - "POST /tools/invoke HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [79230]
+INFO:     Started server process [88614]
+INFO:     Waiting for application startup.
+2026-11-03 23:37:52,261 INFO app.client.manager — MCP server connected: research
+2026-11-03 23:37:52,261 INFO app.main — MCP Client Manager ready — servers=['research']
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+[11/03/26 23:38:01] INFO     HTTP Request: GET                   _client.py:1773
+                             https://en.wikipedia.org/w/api.php?                
+                             action=query&list=search&srsearch=R                
+                             ajdhani%20Express%20Chennai%20train                
+                             %20route&srlimit=5&format=json&utf8                
+                             =1 "HTTP/1.1 403 Forbidden"                        
+                    ERROR    Tool 'web_search' raised an           server.py:455
+                             unexpected exception                               
+                             ╭─ Traceback (most recent call last─╮              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/tools/base.py:179 in  │              
+                             │ run                               │              
+                             │                                   │              
+                             │   176 │   │   │   │   │   return  │              
+                             │       else resolved               │              
+                             │   177 │   │   │   │   pass_direct │              
+                             │   178 │   │   │                   │              
+                             │ ❱ 179 │   │   │   result = await  │              
+                             │       pass_directly)              │              
+                             │   180 │   │   │                   │              
+                             │   181 │   │   │   # Registration  │              
+                             │   182 │   │   │   # a body that r │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/utilities/func_metada │              
+                             │ ta.py:163 in call_fn              │              
+                             │                                   │              
+                             │   160 │   │   """                 │              
+                             │   161 │   │   kwargs = arguments  │              
+                             │   162 │   │   if fn_is_async:     │              
+                             │ ❱ 163 │   │   │   return await fn │              
+                             │   164 │   │   return await anyio. │              
+                             │   165 │                           │              
+                             │   166 │   @deprecated(            │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/mcp-se │              
+                             │ rvers/research/server.py:55 in    │              
+                             │ web_search                        │              
+                             │                                   │              
+                             │    52 │   │   │   },              │              
+                             │    53 │   │   │   headers={"Accep │              
+                             │    54 │   │   )                   │              
+                             │ ❱  55 │   │   resp.raise_for_stat │              
+                             │    56 │   │   data = resp.json()  │              
+                             │    57 │                           │              
+                             │    58 │   results = data.get("que │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/httpx/_mo │              
+                             │ dels.py:761 in raise_for_status   │              
+                             │                                   │              
+                             │    758 │   │   }                  │              
+                             │    759 │   │   error_type = error │              
+                             │    760 │   │   message = message. │              
+                             │ ❱  761 │   │   raise HTTPStatusEr │              
+                             │    762 │                          │              
+                             │    763 │   def json(self, **kwarg │              
+                             │    764 │   │   return jsonlib.loa │              
+                             ╰───────────────────────────────────╯              
+                             HTTPStatusError: Client error '403                 
+                             Forbidden' for url                                 
+                             'https://en.wikipedia.org/w/api.php?a              
+                             ction=query&list=search&srsearch=Rajd              
+                             hani%20Express%20Chennai%20train%20ro              
+                             ute&srlimit=5&format=json&utf8=1'                  
+                             For more information check:                        
+                             https://developer.mozilla.org/en-US/d              
+                             ocs/Web/HTTP/Status/403                            
+                                                                                
+                             The above exception was the direct                 
+                             cause of the following exception:                  
+                                                                                
+                             ╭─ Traceback (most recent call last─╮              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/server.py:442 in      │              
+                             │ _handle_call_tool                 │              
+                             │                                   │              
+                             │    439 │   ) -> CallToolResult |  │              
+                             │    440 │   │   context = Context( │              
+                             │        subscriptions=self._subscr │              
+                             │    441 │   │   try:               │              
+                             │ ❱  442 │   │   │   return await s │              
+                             │    443 │   │   except MCPError:   │              
+                             │    444 │   │   │   raise          │              
+                             │    445 │   │   except Exception a │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/server.py:548 in      │              
+                             │ call_tool                         │              
+                             │                                   │              
+                             │    545 │   │   """                │              
+                             │    546 │   │   if context is None │              
+                             │    547 │   │   │   context = Cont │              
+                             │ ❱  548 │   │   return await self. │              
+                             │        convert_result=True)       │              
+                             │    549 │                          │              
+                             │    550 │   async def list_resourc │              
+                             │    551 │   │   """List all availa │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/tools/tool_manager.py │              
+                             │ :87 in call_tool                  │              
+                             │                                   │              
+                             │   84 │   │   if not tool:         │              
+                             │   85 │   │   │   raise ToolError( │              
+                             │   86 │   │                        │              
+                             │ ❱ 87 │   │   return await tool.ru │              
+                             │   88                              │              
+                             │                                   │              
+                             │ /Users/utsavgautam/AIAgent/servic │              
+                             │ es/mcp-client-manager/.venv/lib/p │              
+                             │ ython3.12/site-packages/mcp/serve │              
+                             │ r/mcpserver/tools/base.py:213 in  │              
+                             │ run                               │              
+                             │                                   │              
+                             │   210 │   │   │   raise ToolError │              
+                             │   211 │   │   except Exception as │              
+                             │   212 │   │   │   # A crash: the  │              
+                             │ ❱ 213 │   │   │   raise Unexpecte │              
+                             │   214                             │              
+                             ╰───────────────────────────────────╯              
+                             UnexpectedToolError: Error executing               
+                             tool web_search                                    
+2026-11-03 23:38:01,477 INFO mcp.audit — tool_invocation tenant=00000000-0000-0000-0000-000000000001 role=user server=research tool=web_search args=['query'] success=True error= duration_ms=623.5 ts=2026-11-03T18:08:01.477917+00:00
+INFO:     127.0.0.1:56866 - "POST /tools/invoke HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [88614]
+INFO:     Started server process [1788]
+INFO:     Waiting for application startup.
+2026-11-04 14:12:19,899 INFO app.client.manager — MCP server connected: research
+2026-11-04 14:12:19,900 INFO app.main — MCP Client Manager ready — servers=['research']
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+[11/04/26 14:12:27] INFO     HTTP Request: GET                   _client.py:1773
+                             https://en.wikipedia.org/w/api.php?                
+                             action=query&list=search&srsearch=R                
+                             ajdhani%20Express%20Chennai%20Hazra                
+                             t%20Nizamuddin&srlimit=5&format=jso                
+                             n&utf8=1 "HTTP/1.1 200 OK"                         
+2026-11-04 14:12:27,915 INFO mcp.audit — tool_invocation tenant=00000000-0000-0000-0000-000000000001 role=user server=research tool=web_search args=['query'] success=True error= duration_ms=806.6 ts=2026-11-04T08:42:27.915831+00:00
+INFO:     127.0.0.1:59455 - "POST /tools/invoke HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1788]
+INFO:     Started server process [61158]
+INFO:     Waiting for application startup.
+2026-11-05 19:12:42,058 INFO app.client.manager — MCP server connected: research
+2026-11-05 19:12:42,058 INFO app.main — MCP Client Manager ready — servers=['research']
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8004 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52094 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53000 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53294 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53400 - "GET /tools HTTP/1.1" 200 OK

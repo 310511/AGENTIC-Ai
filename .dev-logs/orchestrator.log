@@ -1606,3 +1606,128 @@ INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
 INFO:     Finished server process [57463]
+INFO:     Started server process [66195]
+INFO:     Waiting for application startup.
+2026-11-03 20:56:24,672 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:55872 - "GET /health HTTP/1.1" 200 OK
+INFO:     Started server process [69152]
+INFO:     Waiting for application startup.
+2026-11-03 23:00:30,058 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+ERROR:    [Errno 48] error while attempting to bind on address ('0.0.0.0', 8001): address already in use
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Started server process [69757]
+INFO:     Waiting for application startup.
+2026-11-03 23:01:47,554 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+ERROR:    [Errno 48] error while attempting to bind on address ('0.0.0.0', 8001): address already in use
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Started server process [70310]
+INFO:     Waiting for application startup.
+2026-11-03 23:02:50,185 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+ERROR:    [Errno 48] error while attempting to bind on address ('0.0.0.0', 8001): address already in use
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Started server process [72822]
+INFO:     Waiting for application startup.
+2026-11-03 23:10:20,709 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+ERROR:    [Errno 48] error while attempting to bind on address ('0.0.0.0', 8001): address already in use
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     127.0.0.1:65008 - "POST /run HTTP/1.1" 202 Accepted
+2026-11-03 23:14:46,083 INFO httpx — HTTP Request: POST http://localhost:8002/retrieve "HTTP/1.1 200 OK"
+2026-11-03 23:14:47,689 INFO httpx — HTTP Request: POST http://localhost:8003/retrieve "HTTP/1.1 200 OK"
+2026-11-03 23:14:47,726 INFO httpx — HTTP Request: GET http://localhost:8004/tools "HTTP/1.1 200 OK"
+2026-11-03 23:14:47,810 INFO app.graph.nodes — plan_node: task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637
+2026-11-03 23:14:56,849 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 23:14:56,869 INFO app.graph.nodes — tool_call_node: task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637
+2026-11-03 23:14:57,869 INFO httpx — HTTP Request: POST http://localhost:8004/tools/invoke "HTTP/1.1 200 OK"
+2026-11-03 23:14:57,870 INFO app.graph.nodes — tool_call: server=research tool=fetch_url error=None
+2026-11-03 23:14:58,072 INFO httpx — HTTP Request: POST http://localhost:8004/tools/invoke "HTTP/1.1 200 OK"
+2026-11-03 23:14:58,073 INFO app.graph.nodes — tool_call: server=research tool=summarise_text error=None
+2026-11-03 23:14:58,075 INFO app.graph.nodes — execute_node: task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637 retry=0
+2026-11-03 23:14:58,659 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 23:14:58,664 INFO app.graph.nodes — verify_node: task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637
+2026-11-03 23:15:00,108 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 23:15:00,116 INFO app.graph.nodes — execute_node: task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637 retry=1
+2026-11-03 23:15:02,668 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 23:15:02,672 INFO app.graph.nodes — verify_node: task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637
+2026-11-03 23:15:03,524 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 23:15:03,527 INFO app.graph.nodes — execute_node: task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637 retry=2
+2026-11-03 23:15:04,240 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 23:15:04,243 INFO app.graph.nodes — verify_node: task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637
+2026-11-03 23:15:05,074 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 23:15:05,077 INFO app.graph.nodes — execute_node: task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637 retry=3
+2026-11-03 23:15:07,383 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-03 23:15:07,384 INFO app.graph.nodes — verify_node: task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637
+2026-11-03 23:15:07,385 WARNING app.graph.nodes — verify_node: max retries reached for task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637
+2026-11-03 23:15:07,445 INFO app.main — Task bf4fcf72-6edf-4220-8c35-77a4d1c86637 completed
+2026-11-03 23:15:07,801 INFO httpx — HTTP Request: POST http://localhost:8003/store "HTTP/1.1 500 Internal Server Error"
+INFO:     Started server process [77497]
+INFO:     Waiting for application startup.
+2026-11-03 23:27:36,766 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+ERROR:    [Errno 48] error while attempting to bind on address ('0.0.0.0', 8001): address already in use
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Started server process [79237]
+INFO:     Waiting for application startup.
+2026-11-03 23:29:42,905 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+ERROR:    [Errno 48] error while attempting to bind on address ('0.0.0.0', 8001): address already in use
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Started server process [89116]
+INFO:     Waiting for application startup.
+2026-11-03 23:37:54,092 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+ERROR:    [Errno 48] error while attempting to bind on address ('0.0.0.0', 8001): address already in use
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Started server process [1803]
+INFO:     Waiting for application startup.
+2026-11-04 14:12:21,752 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+ERROR:    [Errno 48] error while attempting to bind on address ('0.0.0.0', 8001): address already in use
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [66195]
+INFO:     Started server process [61159]
+INFO:     Waiting for application startup.
+2026-11-05 19:12:42,094 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52087 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [61159]
+INFO:     Started server process [61765]
+INFO:     Waiting for application startup.
+2026-11-05 19:13:38,009 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52221 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52994 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53288 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53378 - "POST /run HTTP/1.1" 202 Accepted
+2026-11-05 19:22:55,190 INFO httpx — HTTP Request: POST http://localhost:8002/retrieve "HTTP/1.1 200 OK"
+2026-11-05 19:22:57,286 INFO httpx — HTTP Request: POST http://localhost:8003/retrieve "HTTP/1.1 200 OK"
+2026-11-05 19:22:57,462 INFO httpx — HTTP Request: GET http://localhost:8004/tools "HTTP/1.1 200 OK"
+2026-11-05 19:22:57,473 INFO app.graph.nodes — plan_node: task_id=8a7748ec-4e26-453e-a493-8b5bc84af879
+2026-11-05 19:22:57,480 ERROR app.graph.nodes — plan_node failed: All connection attempts failed
+2026-11-05 19:22:57,480 INFO app.graph.nodes — tool_call_node: task_id=8a7748ec-4e26-453e-a493-8b5bc84af879
+2026-11-05 19:22:57,481 INFO app.graph.nodes — execute_node: task_id=8a7748ec-4e26-453e-a493-8b5bc84af879 retry=0
+2026-11-05 19:22:57,481 ERROR app.graph.nodes — execute_node failed: 'plan'
+2026-11-05 19:22:57,481 INFO app.graph.nodes — verify_node: task_id=8a7748ec-4e26-453e-a493-8b5bc84af879
+2026-11-05 19:22:57,481 ERROR app.graph.nodes — verify_node failed: 'result'
+2026-11-05 19:22:57,497 ERROR app.main — Task 8a7748ec-4e26-453e-a493-8b5bc84af879 failed: Execution failed: 'plan'

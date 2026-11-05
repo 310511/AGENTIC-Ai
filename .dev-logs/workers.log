@@ -494,3 +494,57 @@ AttributeError: 'Channel' object has no attribute 'default_exchange'
 2026-11-03 20:29:39,520 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
 2026-11-03 20:29:39,520 INFO app.runner — Task 7cdcdc6a-53de-4869-b5d3-600bb54bd386 accepted by orchestrator (attempt 1)
 2026-11-03 20:29:39,520 INFO __main__ — Task 7cdcdc6a-53de-4869-b5d3-600bb54bd386 succeeded on attempt 1
+2026-11-03 20:56:23,963 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-03 20:56:24,015 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-03 20:56:24,016 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-03 23:00:29,541 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-03 23:00:29,590 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-03 23:00:29,591 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-03 23:01:47,069 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-03 23:01:47,091 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-03 23:01:47,092 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-03 23:02:49,697 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-03 23:02:49,721 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-03 23:02:49,721 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-03 23:10:20,197 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-03 23:10:20,226 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-03 23:10:20,226 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-03 23:14:44,179 INFO __main__ — Received task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637 attempt=1
+2026-11-03 23:14:44,185 INFO __main__ — Worker shut down cleanly
+2026-11-03 23:14:44,186 INFO app.runner — Worker attempt=1 task_id=bf4fcf72-6edf-4220-8c35-77a4d1c86637
+2026-11-03 23:14:44,479 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
+2026-11-03 23:14:44,480 INFO app.runner — Task bf4fcf72-6edf-4220-8c35-77a4d1c86637 accepted by orchestrator (attempt 1)
+2026-11-03 23:14:44,480 INFO __main__ — Task bf4fcf72-6edf-4220-8c35-77a4d1c86637 succeeded on attempt 1
+2026-11-03 23:27:36,194 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-03 23:27:36,253 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-03 23:27:36,254 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-03 23:29:42,409 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-03 23:29:42,442 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-03 23:29:42,443 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-03 23:37:53,493 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-03 23:37:53,533 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-03 23:37:53,534 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-04 14:12:20,103 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-04 14:12:20,201 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-04 14:12:20,202 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-05 19:12:41,234 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-05 19:12:41,349 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-05 19:12:41,350 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-05 19:13:37,461 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-05 19:13:37,493 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-05 19:13:37,494 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-05 19:22:51,898 INFO __main__ — Worker shut down cleanly
+2026-11-05 19:22:52,006 INFO __main__ — Worker shut down cleanly
+2026-11-05 19:22:52,082 INFO __main__ — Worker shut down cleanly
+2026-11-05 19:22:52,261 INFO __main__ — Worker shut down cleanly
+2026-11-05 19:22:52,580 INFO __main__ — Worker shut down cleanly
+2026-11-05 19:22:52,696 INFO __main__ — Worker shut down cleanly
+2026-11-05 19:22:52,753 INFO __main__ — Worker shut down cleanly
+2026-11-05 19:22:52,812 INFO __main__ — Worker shut down cleanly
+2026-11-05 19:22:52,879 INFO __main__ — Worker shut down cleanly
+2026-11-05 19:22:52,925 INFO __main__ — Received task_id=8a7748ec-4e26-453e-a493-8b5bc84af879 attempt=1
+2026-11-05 19:22:52,926 INFO app.runner — Worker attempt=1 task_id=8a7748ec-4e26-453e-a493-8b5bc84af879
+2026-11-05 19:22:52,952 INFO __main__ — Worker shut down cleanly
+2026-11-05 19:22:53,091 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
+2026-11-05 19:22:53,092 INFO app.runner — Task 8a7748ec-4e26-453e-a493-8b5bc84af879 accepted by orchestrator (attempt 1)
+2026-11-05 19:22:53,092 INFO __main__ — Task 8a7748ec-4e26-453e-a493-8b5bc84af879 succeeded on attempt 1

@@ -6543,3 +6543,1406 @@ WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC
 INFO:     127.0.0.1:64364 - "GET /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
 2026-11-03 20:46:37,099 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bd9b80> was stuck. No frames were received in 183 seconds.
 2026-11-03 20:46:37,202 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-03 21:25:49,740 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b9fdcc0> was stuck. No frames were received in 183 seconds.
+2026-11-03 21:25:49,752 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-03 21:41:25,680 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bdb840> was stuck. No frames were received in 183 seconds.
+2026-11-03 21:41:25,682 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-03 21:58:11,738 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098908c0> was stuck. No frames were received in 183 seconds.
+2026-11-03 21:58:11,741 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-03 22:15:12,680 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109890820> was stuck. No frames were received in 183 seconds.
+2026-11-03 22:15:12,684 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-03 22:33:21,677 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098623f0> was stuck. No frames were received in 183 seconds.
+2026-11-03 22:33:21,767 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-03 22:49:41,658 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b9fec60> was stuck. No frames were received in 183 seconds.
+2026-11-03 22:49:41,676 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-03 22:59:20,840 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bdb840> was stuck. No frames were received in 183 seconds.
+2026-11-03 22:59:20,849 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:64923 - "OPTIONS /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64923 - "GET /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:64923 - "OPTIONS /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+2026-11-03 23:14:32,123 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-11-03 23:14:32,123 INFO sqlalchemy.engine.Engine — BEGIN (implicit)
+2026-11-03 23:14:32,128 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:14:32,128 INFO sqlalchemy.engine.Engine — SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:14:32,130 INFO sqlalchemy.engine.Engine [cached since 3.104e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:14:32,130 INFO sqlalchemy.engine.Engine — [cached since 3.104e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:14:32,142 INFO sqlalchemy.engine.Engine SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:14:32,142 INFO sqlalchemy.engine.Engine — SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:14:32,142 INFO sqlalchemy.engine.Engine [cached since 3.104e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:14:32,142 INFO sqlalchemy.engine.Engine — [cached since 3.104e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:14:32,157 INFO sqlalchemy.engine.Engine COMMIT
+2026-11-03 23:14:32,157 INFO sqlalchemy.engine.Engine — COMMIT
+INFO:     127.0.0.1:64923 - "GET /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64923 - "OPTIONS /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+2026-11-03 23:14:34,530 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-11-03 23:14:34,530 INFO sqlalchemy.engine.Engine — BEGIN (implicit)
+2026-11-03 23:14:34,531 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:14:34,531 INFO sqlalchemy.engine.Engine — SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:14:34,531 INFO sqlalchemy.engine.Engine [cached since 3.104e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:14:34,531 INFO sqlalchemy.engine.Engine — [cached since 3.104e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:14:34,537 INFO sqlalchemy.engine.Engine SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:14:34,537 INFO sqlalchemy.engine.Engine — SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:14:34,538 INFO sqlalchemy.engine.Engine [cached since 3.104e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:14:34,538 INFO sqlalchemy.engine.Engine — [cached since 3.104e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:14:34,540 INFO sqlalchemy.engine.Engine COMMIT
+2026-11-03 23:14:34,540 INFO sqlalchemy.engine.Engine — COMMIT
+INFO:     127.0.0.1:64923 - "GET /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64923 - "OPTIONS /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+2026-11-03 23:14:39,529 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-11-03 23:14:39,529 INFO sqlalchemy.engine.Engine — BEGIN (implicit)
+2026-11-03 23:14:39,530 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:14:39,530 INFO sqlalchemy.engine.Engine — SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:14:39,530 INFO sqlalchemy.engine.Engine [cached since 3.105e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:14:39,530 INFO sqlalchemy.engine.Engine — [cached since 3.105e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:14:39,537 INFO sqlalchemy.engine.Engine SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:14:39,537 INFO sqlalchemy.engine.Engine — SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:14:39,538 INFO sqlalchemy.engine.Engine [cached since 3.104e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:14:39,538 INFO sqlalchemy.engine.Engine — [cached since 3.104e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:14:39,541 INFO sqlalchemy.engine.Engine COMMIT
+2026-11-03 23:14:39,541 INFO sqlalchemy.engine.Engine — COMMIT
+INFO:     127.0.0.1:64923 - "GET /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64923 - "OPTIONS /api/v1/tasks HTTP/1.1" 200 OK
+2026-11-03 23:14:44,021 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-11-03 23:14:44,021 INFO sqlalchemy.engine.Engine — BEGIN (implicit)
+2026-11-03 23:14:44,024 INFO sqlalchemy.engine.Engine INSERT INTO tasks (id, tenant_id, created_by, title, description, priority, status, error_message, metadata, created_at, updated_at, completed_at) VALUES ($1::UUID, $2::UUID, $3::UUID, $4::VARCHAR, $5::VARCHAR, $6::task_priority, $7::task_status, $8::VARCHAR, $9::JSON, $10::TIMESTAMP WITH TIME ZONE, $11::TIMESTAMP WITH TIME ZONE, $12::TIMESTAMP WITH TIME ZONE)
+2026-11-03 23:14:44,024 INFO sqlalchemy.engine.Engine — INSERT INTO tasks (id, tenant_id, created_by, title, description, priority, status, error_message, metadata, created_at, updated_at, completed_at) VALUES ($1::UUID, $2::UUID, $3::UUID, $4::VARCHAR, $5::VARCHAR, $6::task_priority, $7::task_status, $8::VARCHAR, $9::JSON, $10::TIMESTAMP WITH TIME ZONE, $11::TIMESTAMP WITH TIME ZONE, $12::TIMESTAMP WITH TIME ZONE)
+2026-11-03 23:14:44,024 INFO sqlalchemy.engine.Engine [cached since 2.063e+04s ago] (UUID('bf4fcf72-6edf-4220-8c35-77a4d1c86637'), UUID('607413ef-2059-44f7-afeb-82e845acee61'), UUID('607413ef-2059-44f7-afeb-82e845acee61'), 'Search tickets', 'Search rail tickets for 3rd AC from mathura to chennai for 31 dec 2026', 'normal', 'pending', None, '{}', datetime.datetime(2026, 11, 3, 17, 44, 44, 24777, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 11, 3, 17, 44, 44, 24781, tzinfo=datetime.timezone.utc), None)
+2026-11-03 23:14:44,024 INFO sqlalchemy.engine.Engine — [cached since 2.063e+04s ago] (UUID('bf4fcf72-6edf-4220-8c35-77a4d1c86637'), UUID('607413ef-2059-44f7-afeb-82e845acee61'), UUID('607413ef-2059-44f7-afeb-82e845acee61'), 'Search tickets', 'Search rail tickets for 3rd AC from mathura to chennai for 31 dec 2026', 'normal', 'pending', None, '{}', datetime.datetime(2026, 11, 3, 17, 44, 44, 24777, tzinfo=datetime.timezone.utc), datetime.datetime(2026, 11, 3, 17, 44, 44, 24781, tzinfo=datetime.timezone.utc), None)
+2026-11-03 23:14:44,040 INFO sqlalchemy.engine.Engine SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.id = $1::UUID
+2026-11-03 23:14:44,040 INFO sqlalchemy.engine.Engine — SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.id = $1::UUID
+2026-11-03 23:14:44,040 INFO sqlalchemy.engine.Engine [cached since 2.063e+04s ago] (UUID('bf4fcf72-6edf-4220-8c35-77a4d1c86637'),)
+2026-11-03 23:14:44,040 INFO sqlalchemy.engine.Engine — [cached since 2.063e+04s ago] (UUID('bf4fcf72-6edf-4220-8c35-77a4d1c86637'),)
+2026-11-03 23:14:44,042 INFO app.routers.tasks — Task created: id=bf4fcf72-6edf-4220-8c35-77a4d1c86637 tenant=607413ef-2059-44f7-afeb-82e845acee61 user=607413ef-2059-44f7-afeb-82e845acee61
+2026-11-03 23:14:44,043 INFO sqlalchemy.engine.Engine COMMIT
+2026-11-03 23:14:44,043 INFO sqlalchemy.engine.Engine — COMMIT
+INFO:     127.0.0.1:64923 - "POST /api/v1/tasks HTTP/1.1" 201 Created
+INFO:     127.0.0.1:64923 - "OPTIONS /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+2026-11-03 23:14:44,548 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-11-03 23:14:44,548 INFO sqlalchemy.engine.Engine — BEGIN (implicit)
+2026-11-03 23:14:44,549 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:14:44,549 INFO sqlalchemy.engine.Engine — SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:14:44,549 INFO sqlalchemy.engine.Engine [cached since 3.105e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:14:44,549 INFO sqlalchemy.engine.Engine — [cached since 3.105e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:14:44,550 INFO sqlalchemy.engine.Engine SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:14:44,550 INFO sqlalchemy.engine.Engine — SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:14:44,550 INFO sqlalchemy.engine.Engine [cached since 3.105e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:14:44,550 INFO sqlalchemy.engine.Engine — [cached since 3.105e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:14:44,553 INFO sqlalchemy.engine.Engine COMMIT
+2026-11-03 23:14:44,553 INFO sqlalchemy.engine.Engine — COMMIT
+INFO:     127.0.0.1:64923 - "GET /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65441 - "OPTIONS /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+2026-11-03 23:15:51,223 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-11-03 23:15:51,223 INFO sqlalchemy.engine.Engine — BEGIN (implicit)
+2026-11-03 23:15:51,225 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:15:51,225 INFO sqlalchemy.engine.Engine — SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:15:51,226 INFO sqlalchemy.engine.Engine [cached since 3.112e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:15:51,226 INFO sqlalchemy.engine.Engine — [cached since 3.112e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:15:51,240 INFO sqlalchemy.engine.Engine SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:15:51,240 INFO sqlalchemy.engine.Engine — SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:15:51,240 INFO sqlalchemy.engine.Engine [cached since 3.112e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:15:51,240 INFO sqlalchemy.engine.Engine — [cached since 3.112e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:15:51,249 INFO sqlalchemy.engine.Engine COMMIT
+2026-11-03 23:15:51,249 INFO sqlalchemy.engine.Engine — COMMIT
+INFO:     127.0.0.1:65441 - "GET /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65525 - "OPTIONS /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+2026-11-03 23:16:07,017 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-11-03 23:16:07,017 INFO sqlalchemy.engine.Engine — BEGIN (implicit)
+2026-11-03 23:16:07,018 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:16:07,018 INFO sqlalchemy.engine.Engine — SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:16:07,018 INFO sqlalchemy.engine.Engine [cached since 3.114e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:16:07,018 INFO sqlalchemy.engine.Engine — [cached since 3.114e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:16:07,054 INFO sqlalchemy.engine.Engine SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:16:07,054 INFO sqlalchemy.engine.Engine — SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:16:07,054 INFO sqlalchemy.engine.Engine [cached since 3.113e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:16:07,054 INFO sqlalchemy.engine.Engine — [cached since 3.113e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:16:07,067 INFO sqlalchemy.engine.Engine COMMIT
+2026-11-03 23:16:07,067 INFO sqlalchemy.engine.Engine — COMMIT
+INFO:     127.0.0.1:65525 - "GET /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49196 - "OPTIONS /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+2026-11-03 23:16:17,574 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-11-03 23:16:17,574 INFO sqlalchemy.engine.Engine — BEGIN (implicit)
+2026-11-03 23:16:17,575 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:16:17,575 INFO sqlalchemy.engine.Engine — SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:16:17,575 INFO sqlalchemy.engine.Engine [cached since 3.115e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:16:17,575 INFO sqlalchemy.engine.Engine — [cached since 3.115e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:16:17,583 INFO sqlalchemy.engine.Engine SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:16:17,583 INFO sqlalchemy.engine.Engine — SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:16:17,583 INFO sqlalchemy.engine.Engine [cached since 3.114e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:16:17,583 INFO sqlalchemy.engine.Engine — [cached since 3.114e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:16:17,588 INFO sqlalchemy.engine.Engine COMMIT
+2026-11-03 23:16:17,588 INFO sqlalchemy.engine.Engine — COMMIT
+INFO:     127.0.0.1:49196 - "GET /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49196 - "OPTIONS /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+2026-11-03 23:16:22,127 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-11-03 23:16:22,127 INFO sqlalchemy.engine.Engine — BEGIN (implicit)
+2026-11-03 23:16:22,128 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:16:22,128 INFO sqlalchemy.engine.Engine — SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:16:22,128 INFO sqlalchemy.engine.Engine [cached since 3.115e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:16:22,128 INFO sqlalchemy.engine.Engine — [cached since 3.115e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:16:22,130 INFO sqlalchemy.engine.Engine SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:16:22,130 INFO sqlalchemy.engine.Engine — SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:16:22,130 INFO sqlalchemy.engine.Engine [cached since 3.115e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:16:22,130 INFO sqlalchemy.engine.Engine — [cached since 3.115e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:16:22,132 INFO sqlalchemy.engine.Engine COMMIT
+2026-11-03 23:16:22,132 INFO sqlalchemy.engine.Engine — COMMIT
+INFO:     127.0.0.1:49196 - "GET /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49262 - "OPTIONS /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+2026-11-03 23:16:27,238 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-11-03 23:16:27,238 INFO sqlalchemy.engine.Engine — BEGIN (implicit)
+2026-11-03 23:16:27,239 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:16:27,239 INFO sqlalchemy.engine.Engine — SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:16:27,239 INFO sqlalchemy.engine.Engine [cached since 3.116e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:16:27,239 INFO sqlalchemy.engine.Engine — [cached since 3.116e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:16:27,241 INFO sqlalchemy.engine.Engine SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:16:27,241 INFO sqlalchemy.engine.Engine — SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:16:27,241 INFO sqlalchemy.engine.Engine [cached since 3.115e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:16:27,241 INFO sqlalchemy.engine.Engine — [cached since 3.115e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:16:27,243 INFO sqlalchemy.engine.Engine COMMIT
+2026-11-03 23:16:27,243 INFO sqlalchemy.engine.Engine — COMMIT
+INFO:     127.0.0.1:49262 - "GET /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49262 - "OPTIONS /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+2026-11-03 23:16:32,469 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-11-03 23:16:32,469 INFO sqlalchemy.engine.Engine — BEGIN (implicit)
+2026-11-03 23:16:32,476 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:16:32,476 INFO sqlalchemy.engine.Engine — SELECT count(*) AS count_1 
+FROM (SELECT tasks.id AS id, tasks.tenant_id AS tenant_id, tasks.created_by AS created_by, tasks.title AS title, tasks.description AS description, tasks.priority AS priority, tasks.status AS status, tasks.result AS result, tasks.error_message AS error_message, tasks.metadata AS metadata, tasks.created_at AS created_at, tasks.updated_at AS updated_at, tasks.completed_at AS completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID) AS anon_1
+2026-11-03 23:16:32,482 INFO sqlalchemy.engine.Engine [cached since 3.116e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:16:32,482 INFO sqlalchemy.engine.Engine — [cached since 3.116e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'),)
+2026-11-03 23:16:32,591 INFO sqlalchemy.engine.Engine SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:16:32,591 INFO sqlalchemy.engine.Engine — SELECT tasks.id, tasks.tenant_id, tasks.created_by, tasks.title, tasks.description, tasks.priority, tasks.status, tasks.result, tasks.error_message, tasks.metadata, tasks.created_at, tasks.updated_at, tasks.completed_at 
+FROM tasks 
+WHERE tasks.tenant_id = $1::UUID ORDER BY tasks.created_at DESC 
+ LIMIT $2::INTEGER OFFSET $3::INTEGER
+2026-11-03 23:16:32,591 INFO sqlalchemy.engine.Engine [cached since 3.116e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:16:32,591 INFO sqlalchemy.engine.Engine — [cached since 3.116e+04s ago] (UUID('607413ef-2059-44f7-afeb-82e845acee61'), 20, 0)
+2026-11-03 23:16:32,648 INFO sqlalchemy.engine.Engine COMMIT
+2026-11-03 23:16:32,648 INFO sqlalchemy.engine.Engine — COMMIT
+INFO:     127.0.0.1:49262 - "GET /api/v1/tasks?page=1&page_size=20 HTTP/1.1" 200 OK
+2026-11-04 00:31:43,749 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109892170> was stuck. No frames were received in 183 seconds.
+2026-11-04 00:31:43,792 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 00:40:56,550 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b46b340> was stuck. No frames were received in 183 seconds.
+2026-11-04 00:40:56,552 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 00:58:48,654 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b9fdcc0> was stuck. No frames were received in 183 seconds.
+2026-11-04 00:58:48,717 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 01:16:10,657 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109891450> was stuck. No frames were received in 183 seconds.
+2026-11-04 01:16:10,723 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 01:21:43,662 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098614f0> was stuck. No frames were received in 183 seconds.
+2026-11-04 01:21:43,667 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 01:39:39,652 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098632f0> was stuck. No frames were received in 183 seconds.
+2026-11-04 01:39:39,661 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 01:55:10,654 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109860e60> was stuck. No frames were received in 183 seconds.
+2026-11-04 01:55:10,713 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 02:10:50,673 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b46b340> was stuck. No frames were received in 183 seconds.
+2026-11-04 02:10:50,725 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 02:22:41,652 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8bac0> was stuck. No frames were received in 183 seconds.
+2026-11-04 02:22:41,658 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 02:38:58,675 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098901e0> was stuck. No frames were received in 183 seconds.
+2026-11-04 02:38:58,718 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 02:54:38,640 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bec640> was stuck. No frames were received in 183 seconds.
+2026-11-04 02:54:38,652 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 03:11:18,650 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109862a80> was stuck. No frames were received in 183 seconds.
+2026-11-04 03:11:18,659 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 03:26:24,697 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109862cb0> was stuck. No frames were received in 183 seconds.
+2026-11-04 03:26:24,712 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 03:42:20,640 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098623a0> was stuck. No frames were received in 183 seconds.
+2026-11-04 03:42:20,697 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 03:59:25,620 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109860a50> was stuck. No frames were received in 183 seconds.
+2026-11-04 03:59:25,636 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 04:14:59,637 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bdae90> was stuck. No frames were received in 183 seconds.
+2026-11-04 04:14:59,642 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 04:32:45,638 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109862cb0> was stuck. No frames were received in 183 seconds.
+2026-11-04 04:32:45,642 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 04:49:41,632 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109861360> was stuck. No frames were received in 183 seconds.
+2026-11-04 04:49:41,694 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 05:05:02,632 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109863890> was stuck. No frames were received in 183 seconds.
+2026-11-04 05:05:02,687 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 05:21:53,628 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b46b1b0> was stuck. No frames were received in 183 seconds.
+2026-11-04 05:21:53,660 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 05:37:10,630 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109860fa0> was stuck. No frames were received in 183 seconds.
+2026-11-04 05:37:10,700 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 05:53:16,685 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098914a0> was stuck. No frames were received in 183 seconds.
+2026-11-04 05:53:16,696 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 06:10:42,625 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8bac0> was stuck. No frames were received in 183 seconds.
+2026-11-04 06:10:42,630 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 06:16:21,617 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b9fec60> was stuck. No frames were received in 183 seconds.
+2026-11-04 06:16:21,679 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 06:33:40,625 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b480> was stuck. No frames were received in 183 seconds.
+2026-11-04 06:33:40,682 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 06:50:51,619 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109893110> was stuck. No frames were received in 183 seconds.
+2026-11-04 06:50:51,623 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 07:08:27,611 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098616d0> was stuck. No frames were received in 183 seconds.
+2026-11-04 07:08:27,621 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 07:24:09,606 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109861630> was stuck. No frames were received in 183 seconds.
+2026-11-04 07:24:09,665 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 07:41:56,668 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109861900> was stuck. No frames were received in 183 seconds.
+2026-11-04 07:41:56,672 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 07:58:52,598 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098623a0> was stuck. No frames were received in 183 seconds.
+2026-11-04 07:58:52,663 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 08:12:47,604 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b340> was stuck. No frames were received in 183 seconds.
+2026-11-04 08:12:47,621 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 08:17:21,600 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bee5d0> was stuck. No frames were received in 183 seconds.
+2026-11-04 08:17:21,656 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 08:32:42,599 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b46b1b0> was stuck. No frames were received in 183 seconds.
+2026-11-04 08:32:42,602 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 08:49:58,591 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109862300> was stuck. No frames were received in 183 seconds.
+2026-11-04 08:49:58,596 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 09:06:24,587 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109862c10> was stuck. No frames were received in 183 seconds.
+2026-11-04 09:06:24,592 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 09:18:21,580 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bec190> was stuck. No frames were received in 183 seconds.
+2026-11-04 09:18:21,582 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 09:35:26,586 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109862fd0> was stuck. No frames were received in 183 seconds.
+2026-11-04 09:35:26,655 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 09:50:57,584 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b160> was stuck. No frames were received in 183 seconds.
+2026-11-04 09:50:57,641 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 10:06:36,589 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bcf00> was stuck. No frames were received in 183 seconds.
+2026-11-04 10:06:36,651 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 10:19:21,586 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bdae90> was stuck. No frames were received in 183 seconds.
+2026-11-04 10:19:21,605 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 10:36:50,580 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bee5d0> was stuck. No frames were received in 183 seconds.
+2026-11-04 10:36:50,649 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 10:53:03,574 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bf6b0> was stuck. No frames were received in 183 seconds.
+2026-11-04 10:53:03,581 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 11:08:16,581 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098901e0> was stuck. No frames were received in 183 seconds.
+2026-11-04 11:08:16,587 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 11:20:21,578 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098620d0> was stuck. No frames were received in 183 seconds.
+2026-11-04 11:20:21,634 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 11:36:50,573 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109860d20> was stuck. No frames were received in 183 seconds.
+2026-11-04 11:36:50,582 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 11:52:04,580 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109863480> was stuck. No frames were received in 183 seconds.
+2026-11-04 11:52:04,627 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 12:09:59,567 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098637a0> was stuck. No frames were received in 183 seconds.
+2026-11-04 12:09:59,573 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 12:21:21,562 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10bac26c0> was stuck. No frames were received in 183 seconds.
+2026-11-04 12:21:21,573 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 12:37:52,558 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bdef0> was stuck. No frames were received in 183 seconds.
+2026-11-04 12:37:52,618 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 12:55:53,559 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bde50> was stuck. No frames were received in 183 seconds.
+2026-11-04 12:55:53,560 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 13:11:48,553 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098613b0> was stuck. No frames were received in 183 seconds.
+2026-11-04 13:11:48,559 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 13:22:21,566 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098616d0> was stuck. No frames were received in 183 seconds.
+2026-11-04 13:22:21,613 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 13:38:13,559 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109861360> was stuck. No frames were received in 183 seconds.
+2026-11-04 13:38:13,564 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 13:55:35,606 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098914a0> was stuck. No frames were received in 183 seconds.
+2026-11-04 13:55:35,607 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 14:11:01,538 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bec190> was stuck. No frames were received in 183 seconds.
+2026-11-04 14:11:01,602 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 14:40:22,615 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b480> was stuck. No frames were received in 183 seconds.
+2026-11-04 14:40:22,648 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 14:45:54,707 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109893390> was stuck. No frames were received in 183 seconds.
+2026-11-04 14:45:54,726 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:51140 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51140 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51374 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51374 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51588 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51588 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51802 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51802 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52000 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52000 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52212 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52212 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52412 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52412 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52624 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52624 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52834 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52834 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53042 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53042 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53254 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53254 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53480 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53480 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53677 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53895 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53895 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54094 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54094 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54306 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54306 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54501 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54501 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54708 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54708 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54906 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54906 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55118 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55118 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55315 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55315 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55537 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55537 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55735 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55735 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55944 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55944 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56143 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56143 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56347 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56347 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56545 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56545 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56753 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56753 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56953 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56953 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57163 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57163 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57373 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57373 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57595 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57595 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57714 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57714 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57948 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57948 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58157 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58157 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58366 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58578 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58578 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58792 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58792 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59006 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59006 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59204 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59204 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59416 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59416 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59621 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59621 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59826 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59826 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60029 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60029 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60236 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60236 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60442 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60442 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60651 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60651 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60856 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60856 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61080 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61080 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61286 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61286 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61493 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61493 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61698 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61698 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61907 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61907 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62121 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62121 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62341 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62341 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62607 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62607 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62831 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62831 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63083 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63083 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63313 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63313 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63551 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63551 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63769 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63769 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64001 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64001 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64038 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64038 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64248 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64248 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64275 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64275 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64480 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64480 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64508 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64508 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64720 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64720 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64740 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64740 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64982 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64982 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65000 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65000 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65192 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65192 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65216 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65216 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65406 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65406 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65428 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65428 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49273 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49273 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49303 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49303 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49535 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49535 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49560 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49560 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49782 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49782 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49801 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49801 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49991 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49991 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50011 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50011 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50206 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50206 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50224 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50224 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50421 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50421 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50439 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50439 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50637 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50637 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50658 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50658 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50849 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50849 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50867 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50867 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51068 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51068 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51090 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51090 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51278 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51278 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51298 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51298 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51502 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51502 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51527 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51527 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51717 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51733 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51733 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51930 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51930 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51942 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51942 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52147 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52147 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52159 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52159 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52357 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52357 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52375 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52375 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52577 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52577 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52594 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52594 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52787 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52787 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52805 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52805 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53005 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53005 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53024 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53024 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53227 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53227 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53248 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53248 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53452 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53452 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53477 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53477 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53677 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53696 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53696 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53904 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53904 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53929 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53929 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54133 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54133 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54156 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54156 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54342 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54342 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54361 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54361 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54555 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54555 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54574 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54574 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54761 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54761 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54780 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54780 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54976 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54976 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54996 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54996 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 15:47:15,093 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bee5d0> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:55180 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 15:47:15,177 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:55180 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55203 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55203 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 15:54:32,540 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bda40> was stuck. No frames were received in 183 seconds.
+2026-11-04 15:54:32,542 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:55330 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55330 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55335 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55335 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 16:01:48,311 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b4d0> was stuck. No frames were received in 183 seconds.
+2026-11-04 16:01:48,365 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:55533 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55545 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55545 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55821 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55821 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55861 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55861 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56034 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56034 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56092 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56092 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56258 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56258 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56296 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56297 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56475 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56475 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56511 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56511 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56678 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56678 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56714 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56714 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56913 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56913 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56947 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56947 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57113 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57113 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57146 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57146 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57334 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57334 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57366 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57366 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57536 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57536 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57569 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57569 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57760 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57760 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57798 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57798 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57974 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57974 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58007 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58007 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58194 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58194 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58227 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58227 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58401 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58401 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58431 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58431 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58618 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58618 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58649 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58649 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58817 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58817 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58853 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58853 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59034 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59034 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59070 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59070 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59238 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59238 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59272 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59272 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59455 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59455 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59495 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59495 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59658 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59658 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59693 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59693 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59880 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59880 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59924 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59924 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60096 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60096 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60131 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60131 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60317 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60317 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60355 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60355 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60520 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60520 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60552 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60552 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60740 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60740 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60772 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60772 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60943 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60943 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60976 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60976 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61177 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61177 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61212 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61212 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61383 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61383 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61413 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61413 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61592 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61592 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61628 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61628 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61812 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61812 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61843 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61843 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62029 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62073 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62073 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62245 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62245 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62279 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62279 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62465 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62465 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62502 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62502 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62666 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62666 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62700 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62700 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62875 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62875 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62917 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62917 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63079 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63079 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63116 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63116 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63291 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63291 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63331 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63331 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63485 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63485 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63521 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63521 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63706 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63706 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63738 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63738 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63902 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63902 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63934 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63934 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64121 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64121 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64159 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64159 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64326 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64326 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64365 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64365 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64545 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64545 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64577 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64577 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64738 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64738 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64773 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64773 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64950 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64950 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64990 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64990 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65154 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65154 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65184 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65184 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65386 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65386 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65424 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65424 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49213 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49213 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49249 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49249 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49433 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49433 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49469 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49469 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49638 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49638 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49670 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49854 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49854 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49893 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49893 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50067 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50067 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50095 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50282 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50282 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50309 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50309 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50485 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50485 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50511 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50511 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50729 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50729 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50929 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50929 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51144 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51144 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51340 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51340 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51555 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51555 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51749 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51749 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51971 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51971 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52177 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52177 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52398 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52398 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52600 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52600 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52816 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52816 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53017 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53017 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53242 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53242 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53453 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53453 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53656 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53656 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53860 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53860 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54080 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54080 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54292 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54292 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54509 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54509 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54709 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54709 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54924 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54924 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55124 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55124 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55333 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55333 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55534 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55534 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55747 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55747 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55947 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55947 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56167 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56167 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56371 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56371 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56584 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56584 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56784 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56784 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56996 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56996 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57190 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57190 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57413 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57413 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57620 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57620 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57835 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57835 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58029 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58029 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58248 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58248 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58459 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58459 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58670 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58670 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58874 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58874 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59091 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59091 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59296 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59296 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59514 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59514 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59738 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59738 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59956 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59956 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60157 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60157 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60376 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60376 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60582 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60582 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60791 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60791 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60988 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60988 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61207 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61207 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61402 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61402 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61635 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61635 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61846 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61846 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62061 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62061 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62262 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62262 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62477 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62477 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62677 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62677 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62890 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62890 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63086 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63086 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63306 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63306 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63502 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63502 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63712 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63712 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63908 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63908 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64126 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64126 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64325 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64325 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64549 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64549 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64751 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64751 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60414 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60424 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60652 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60652 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 17:43:39,923 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bd900> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:60802 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 17:43:40,014 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:60802 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60936 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60936 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 17:49:28,223 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10bac25d0> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:61067 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 17:49:28,316 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:61067 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61178 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61178 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 18:05:22,536 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109892f80> was stuck. No frames were received in 183 seconds.
+2026-11-04 18:05:22,537 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:61227 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61227 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 18:13:52,658 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b46b1b0> was stuck. No frames were received in 183 seconds.
+2026-11-04 18:13:52,695 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:61356 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61356 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 18:22:26,658 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bdb110> was stuck. No frames were received in 183 seconds.
+2026-11-04 18:22:26,701 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:61512 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61512 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 18:37:46,474 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bec460> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:61705 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 18:37:46,619 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 18:54:36,595 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10bac25d0> was stuck. No frames were received in 183 seconds.
+2026-11-04 18:54:36,623 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:62036 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62036 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 19:12:25,532 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109863340> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:62117 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 19:12:25,620 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:62117 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 19:27:25,531 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109892170> was stuck. No frames were received in 183 seconds.
+2026-11-04 19:27:25,590 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:62229 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62229 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 19:44:54,639 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109892940> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:62377 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 19:44:54,694 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:62377 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62606 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62606 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62682 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62682 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 20:02:30,154 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b9fec60> was stuck. No frames were received in 183 seconds.
+2026-11-04 20:02:30,182 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:62716 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62834 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62834 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 20:10:14,174 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bd040> was stuck. No frames were received in 183 seconds.
+2026-11-04 20:10:14,245 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:62900 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62900 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 20:18:40,344 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b160> was stuck. No frames were received in 183 seconds.
+2026-11-04 20:18:40,352 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:62973 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 20:28:25,518 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109892940> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:63067 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 20:28:25,587 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:63067 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 20:32:44,731 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109863480> was stuck. No frames were received in 183 seconds.
+2026-11-04 20:32:44,745 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:63166 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63166 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 20:41:22,486 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098632f0> was stuck. No frames were received in 183 seconds.
+2026-11-04 20:41:22,488 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:63268 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63268 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 20:50:59,950 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bdb840> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:63344 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 20:50:59,958 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:63344 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:63454 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63454 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 20:54:13,988 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bdd60> was stuck. No frames were received in 183 seconds.
+2026-11-04 20:54:14,024 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:63515 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63515 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 21:10:29,516 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109892170> was stuck. No frames were received in 183 seconds.
+2026-11-04 21:10:29,531 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:63625 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 21:18:42,915 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109862170> was stuck. No frames were received in 183 seconds.
+2026-11-04 21:18:42,920 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-04 21:27:54,221 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b9fec60> was stuck. No frames were received in 183 seconds.
+2026-11-04 21:27:54,239 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:63955 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63955 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 21:35:55,897 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bec0a0> was stuck. No frames were received in 183 seconds.
+2026-11-04 21:35:55,903 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:64026 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64026 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64096 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64096 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 21:41:35,642 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bd400> was stuck. No frames were received in 183 seconds.
+2026-11-04 21:41:35,644 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:64171 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64171 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 21:52:50,074 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bf610> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:64235 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 21:52:50,088 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:64235 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64371 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64371 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 22:09:28,483 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098924e0> was stuck. No frames were received in 183 seconds.
+2026-11-04 22:09:28,517 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:64433 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64433 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 22:26:17,502 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109890a00> was stuck. No frames were received in 183 seconds.
+2026-11-04 22:26:17,578 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:64545 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 22:30:25,525 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bd950> was stuck. No frames were received in 183 seconds.
+2026-11-04 22:30:25,528 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:64631 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64631 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 22:34:27,924 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bcf50> was stuck. No frames were received in 183 seconds.
+2026-11-04 22:34:27,941 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:64711 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64711 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64854 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64854 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 22:39:11,059 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bf6b0> was stuck. No frames were received in 183 seconds.
+2026-11-04 22:39:11,117 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:64868 - "GET /health HTTP/1.1" 200 OK
+2026-11-04 22:55:46,495 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10bac2e40> was stuck. No frames were received in 183 seconds.
+2026-11-04 22:55:46,504 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:64933 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64933 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 23:12:57,472 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bec190> was stuck. No frames were received in 183 seconds.
+2026-11-04 23:12:57,486 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:65036 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65036 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 23:28:03,879 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bfa70> was stuck. No frames were received in 183 seconds.
+2026-11-04 23:28:03,917 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:65116 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65116 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-04 23:46:02,555 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bcf50> was stuck. No frames were received in 183 seconds.
+2026-11-04 23:46:02,587 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:65237 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65414 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65414 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 00:03:58,544 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b2a0> was stuck. No frames were received in 183 seconds.
+2026-11-05 00:03:58,558 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:65420 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65420 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 00:21:09,558 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b9d0> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:65461 - "GET /health HTTP/1.1" 200 OK
+2026-11-05 00:21:09,601 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:65461 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 00:35:28,487 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bcfa0> was stuck. No frames were received in 183 seconds.
+2026-11-05 00:35:28,491 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:65522 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65522 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 00:52:29,487 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bde00> was stuck. No frames were received in 183 seconds.
+2026-11-05 00:52:29,489 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49196 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49196 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 01:09:00,476 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109893430> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:49238 - "GET /health HTTP/1.1" 200 OK
+2026-11-05 01:09:00,546 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+2026-11-05 01:25:07,476 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b200> was stuck. No frames were received in 183 seconds.
+2026-11-05 01:25:07,477 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49310 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49310 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 01:40:47,469 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109890820> was stuck. No frames were received in 183 seconds.
+2026-11-05 01:40:47,475 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49323 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49323 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 01:55:56,481 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bd9f0> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:49370 - "GET /health HTTP/1.1" 200 OK
+2026-11-05 01:55:56,488 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49370 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 02:11:39,488 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098631b0> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:49411 - "GET /health HTTP/1.1" 200 OK
+2026-11-05 02:11:39,534 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49411 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 02:29:20,465 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bedfe0> was stuck. No frames were received in 183 seconds.
+2026-11-05 02:29:20,466 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49459 - "GET /health HTTP/1.1" 200 OK
+2026-11-05 02:46:54,465 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b9d0> was stuck. No frames were received in 183 seconds.
+2026-11-05 02:46:54,466 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49525 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49525 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 03:03:40,464 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b250> was stuck. No frames were received in 183 seconds.
+2026-11-05 03:03:40,466 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49569 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49569 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 03:18:46,462 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109892170> was stuck. No frames were received in 183 seconds.
+2026-11-05 03:18:46,466 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49608 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49608 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 03:35:56,471 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109861a40> was stuck. No frames were received in 183 seconds.
+2026-11-05 03:35:56,479 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49650 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49650 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 03:51:04,455 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109861d60> was stuck. No frames were received in 183 seconds.
+2026-11-05 03:51:04,456 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49694 - "GET /health HTTP/1.1" 200 OK
+2026-11-05 04:07:27,457 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109bec640> was stuck. No frames were received in 183 seconds.
+2026-11-05 04:07:27,461 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49768 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49768 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 04:24:25,454 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109862e90> was stuck. No frames were received in 183 seconds.
+2026-11-05 04:24:25,454 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49791 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49792 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 04:29:00,455 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bdd60> was stuck. No frames were received in 183 seconds.
+2026-11-05 04:29:00,509 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49838 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49838 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 04:44:35,450 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b390> was stuck. No frames were received in 183 seconds.
+2026-11-05 04:44:35,505 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49869 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49869 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 05:00:10,448 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bd9a0> was stuck. No frames were received in 183 seconds.
+2026-11-05 05:00:10,449 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:49925 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49925 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49966 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49966 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49978 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49978 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49992 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49992 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50006 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50006 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50026 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50026 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50038 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50038 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 05:18:28,444 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bde50> was stuck. No frames were received in 183 seconds.
+2026-11-05 05:18:28,444 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:50052 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50109 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50109 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50124 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50124 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50143 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50143 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50157 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50157 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 05:37:20,447 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10ba8b9d0> was stuck. No frames were received in 183 seconds.
+2026-11-05 05:37:20,461 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:50173 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50173 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50215 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50215 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50225 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50225 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50241 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50241 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50253 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50253 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50270 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50270 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 05:55:19,440 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bd950> was stuck. No frames were received in 183 seconds.
+2026-11-05 05:55:19,441 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:50285 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50285 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50324 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50324 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50336 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50336 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50350 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50350 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50366 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50366 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50376 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50376 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 06:14:38,433 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109890820> was stuck. No frames were received in 183 seconds.
+2026-11-05 06:14:38,434 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:50393 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50393 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50441 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50441 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50451 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50451 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50462 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50462 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50476 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50476 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50490 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50490 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 06:30:00,429 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109862a30> was stuck. No frames were received in 183 seconds.
+2026-11-05 06:30:00,433 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:50539 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50539 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 06:45:46,430 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bfb10> was stuck. No frames were received in 183 seconds.
+2026-11-05 06:45:46,433 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:50568 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50568 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50611 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50611 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50623 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50623 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50635 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50635 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50657 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50657 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50669 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50669 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50684 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50684 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 07:06:46,426 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109860e10> was stuck. No frames were received in 183 seconds.
+2026-11-05 07:06:46,427 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:50708 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50708 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50747 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50747 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50761 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50761 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50775 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50775 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50787 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50787 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50801 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50801 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 07:25:29,423 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bda40> was stuck. No frames were received in 183 seconds.
+2026-11-05 07:25:29,452 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:50816 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50816 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50867 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50867 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50877 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50877 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50892 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50892 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50908 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50908 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50920 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50933 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50933 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 07:49:02,417 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x109890820> was stuck. No frames were received in 183 seconds.
+2026-11-05 07:49:02,426 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:50963 - "GET /health HTTP/1.1" 200 OK
+2026-11-05 07:59:33,423 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x10b4bcf50> was stuck. No frames were received in 183 seconds.
+INFO:     127.0.0.1:51023 - "GET /health HTTP/1.1" 200 OK
+2026-11-05 07:59:33,490 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:51023 - "GET /v1/models HTTP/1.1" 404 Not Found
+2026-11-05 08:11:09,145 WARNING aiormq.connection — Server connection <Connection: "amqp://guest:******@localhost:5672/" at 0x1098614a0> was stuck. No frames were received in 183 seconds.
+2026-11-05 08:11:09,146 INFO aio_pika.robust_connection — Connection to amqp://guest:******@localhost:5672/ closed. Reconnecting after 5 seconds.
+INFO:     127.0.0.1:51167 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51167 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51209 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51209 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2026-11-05 08:12:20,275 INFO app.main — Shutting down AI Agent Platform API
+2026-11-05 08:12:20,553 INFO app.database — Database engine disposed
+INFO:     Application shutdown complete.
+INFO:     Finished server process [31022]
+INFO:     Started server process [61160]
+INFO:     Waiting for application startup.
+2026-11-05 19:12:41,837 INFO app.main — Starting AI Agent Platform API (debug=True)
+2026-11-05 19:12:41,860 INFO app.database — Database engine created
+2026-11-05 19:12:41,900 INFO app.publisher — RabbitMQ publisher connected
+2026-11-05 19:12:41,900 INFO app.main — Startup complete
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:52085 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52992 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53286 - "GET /health HTTP/1.1" 200 OK

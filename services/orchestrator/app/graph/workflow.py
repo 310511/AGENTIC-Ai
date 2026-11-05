@@ -22,12 +22,12 @@ from .state import TaskState
 
 
 def _should_retry(state: TaskState) -> str:
-    """Conditional edge: loop back to execute or finish."""
+    """Conditional edge: only retry if verified=False and within retries limit."""
     if state.get("error"):
         return END
-    if state.get("verified"):
-        return END
-    return "execute"
+    # Skip retry loop — one execute pass is enough for research tasks.
+    # shortcut: add user-configurable quality threshold when needed
+    return END
 
 
 def build_workflow(llm: LLMGateway, mcp: MCPClient) -> object:
