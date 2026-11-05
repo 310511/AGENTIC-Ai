@@ -2,7 +2,8 @@
 Knowledge Service — FastAPI entry point (Phase 3).
 
 Internal endpoints (not exposed to the public internet):
-  POST /ingest          — chunk, embed, and index a document
+  POST /ingest          — chunk, embed, and index a document (text)
+  POST /ingest-file     — upload PDF/image, extract text, chunk, embed, index
   POST /retrieve        — vector similarity search (tenant-scoped)
   POST /extract         — spaCy NER + sentence splitting
   DELETE /documents/{id} — remove a document's vectors from the index
@@ -15,9 +16,10 @@ import logging
 import sys
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile, status
 
 from .chunker import chunk_text
+from .extractor import SUPPORTED_MIME, extract_text
 from .config import get_settings
 from .embedder import Embedder
 from .nlp import NLPProcessor
@@ -158,6 +160,67 @@ async def ingest(req: IngestRequest):
         req.document_id, req.tenant_id, added,
     )
     return IngestResponse(document_id=req.document_id, chunks_indexed=added)
+
+
+@app.post("/ingest-file", response_model=IngestResponse, status_code=status.HTTP_201_CREATED)
+async def ingest_file(
+    file: UploadFile = File(...),
+    tenant_id: str = Form(...),
+    document_id: str = Form(...),
+    title: str = Form(...),
+):
+    """
+    Upload a PDF or image file, extract text (pdfplumber + OCR fallback),
+    chunk, embed, and index it — same pipeline as /ingest but file-based.
+
+    Accepts: application/pdf, image/png, image/jpeg, image/tiff, image/bmp, image/webp
+    """
+    _require_ready()
+
+    mime = file.content_type or ""
+    if mime.lower().split(";")[0].strip() not in SUPPORTED_MIME:
+        raise HTTPException(
+            status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
+            detail=f"Unsupported file type '{mime}'. Upload a PDF or image.",
+        )
+
+    data = await file.read()
+    if len(data) > 50 * 1024 * 1024:  # 50 MB hard cap
+        raise HTTPException(
+            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+            detail="File too large (max 50 MB)",
+        )
+
+    try:
+        text = await asyncio.to_thread(extract_text, data, mime)
+    except Exception as exc:
+        logger.error("Text extraction failed for %s: %s", document_id, exc)
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=f"Could not extract text: {exc}",
+        ) from exc
+
+    if not text.strip():
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="No text found in document (empty PDF or blank image)",
+        )
+
+    # Reuse the same ingest pipeline as /ingest
+    _store.delete_document(document_id, tenant_id)
+    chunks = chunk_text(text, settings.chunk_size, settings.chunk_overlap)
+    vectors = await asyncio.to_thread(_embedder.embed_documents, [c.text for c in chunks])
+    chunk_dicts = [
+        {"index": c.index, "text": c.text, "metadata": {"title": title, "source": file.filename}}
+        for c in chunks
+    ]
+    added = _store.add(vectors, document_id, tenant_id, chunk_dicts)
+
+    logger.info(
+        "Ingested file document_id=%s tenant=%s chunks=%d filename=%s",
+        document_id, tenant_id, added, file.filename,
+    )
+    return IngestResponse(document_id=document_id, chunks_indexed=added)
 
 
 @app.post("/retrieve", response_model=RetrieveResponse)

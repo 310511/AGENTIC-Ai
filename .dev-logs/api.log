@@ -7946,3 +7946,18 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 INFO:     127.0.0.1:52085 - "GET /health HTTP/1.1" 200 OK
 INFO:     127.0.0.1:52992 - "GET /health HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53286 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2026-11-05 19:53:08,696 INFO app.main — Shutting down AI Agent Platform API
+2026-11-05 19:53:08,748 INFO app.database — Database engine disposed
+INFO:     Application shutdown complete.
+INFO:     Finished server process [61160]
+INFO:     Started server process [81237]
+INFO:     Waiting for application startup.
+2026-11-05 19:53:10,359 INFO app.main — Starting AI Agent Platform API (debug=True)
+2026-11-05 19:53:10,381 INFO app.database — Database engine created
+2026-11-05 19:53:10,458 INFO app.publisher — RabbitMQ publisher connected
+2026-11-05 19:53:10,458 INFO app.main — Startup complete
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:57326 - "GET /health HTTP/1.1" 200 OK

@@ -121,28 +121,35 @@ async def execute_node(state: TaskState, llm: LLMGateway) -> dict:
 
     tool_section = ""
     for tc in state.get("tool_calls") or []:
+        tool_header = f"\n### Tool result: {tc['server']}/{tc['tool']}"
         if tc.get("error"):
-            tool_section += f"\n- {tc['server']}/{tc['tool']}: ERROR — {tc['error']}"
+            tool_section += f"{tool_header}\nERROR: {tc['error']}\n"
         else:
             result_blocks = tc.get("result") or []
-            texts = [
-                b.get("text", "") for b in result_blocks
-                if isinstance(b, dict) and b.get("text")
-            ]
-            tool_section += f"\n- {tc['server']}/{tc['tool']}: {' '.join(texts)[:500]}"
+            if isinstance(result_blocks, list):
+                texts = [
+                    b.get("text", "") for b in result_blocks
+                    if isinstance(b, dict) and b.get("text")
+                ]
+                content = "\n".join(texts)[:2000]
+            else:
+                content = str(result_blocks)[:2000]
+            tool_section += f"{tool_header}\n{content}\n"
     if tool_section:
-        tool_section = f"\n\nTool results:{tool_section}\n"
+        tool_section = f"\n\n## Tool results (use this data to answer the task):{tool_section}"
 
     try:
         resp = await llm.chat(
             system=(
                 "You are a capable AI agent. "
-                "Follow the given plan step by step and produce a clear, complete result. "
-                "Output the result directly — no meta-commentary."
+                "The tool results below contain real fetched data. "
+                "Use that data to directly answer the task. "
+                "Do NOT output TOOL: lines — the tool calls are already done. "
+                "Output only the final answer clearly and concisely."
             ),
             user=(
-                f"Task: {state['title']}\n\n"
-                f"Plan:\n{state['plan']}"
+                f"Task: {state['title']}\n"
+                f"Description: {state['description']}"
                 f"{tool_section}"
                 f"{feedback_section}"
             ),

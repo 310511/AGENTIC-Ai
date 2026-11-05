@@ -50,62 +50,54 @@ async def _process_message(
     session_factory: async_sessionmaker,
 ) -> None:
     """Handle one message: run with retries, ack on success, nack to DLQ on exhaustion."""
-    async with message.process(requeue=False):  # manual ack inside context
-        try:
-            payload = json.loads(message.body)
-        except json.JSONDecodeError:
-            logger.error("Bad message body, sending to DLQ: %r", message.body[:200])
-            await message.nack(requeue=False)
-            return
+    try:
+        payload = json.loads(message.body)
+    except json.JSONDecodeError:
+        logger.error("Bad message body, sending to DLQ: %r", message.body[:200])
+        await message.nack(requeue=False)
+        return
 
-        task_id = payload.get("task_id", "unknown")
-        headers = dict(message.headers or {})
-        attempt = int(headers.get("x-attempt", 1))
+    task_id = payload.get("task_id", "unknown")
+    headers = dict(message.headers or {})
+    attempt = int(headers.get("x-attempt", 1))
 
-        logger.info("Received task_id=%s attempt=%d", task_id, attempt)
+    logger.info("Received task_id=%s attempt=%d", task_id, attempt)
 
-        # Idempotency: skip already-terminal tasks.
-        # (Orchestrator may have completed it before this worker picked it up.)
-        # We skip the DB check here and let runner.run_task handle the in_progress
-        # set — the DB update is idempotent for non-terminal → in_progress transitions.
+    success = await run_task(payload, settings, session_factory, attempt=attempt)
 
-        success = await run_task(payload, settings, session_factory, attempt=attempt)
+    if success:
+        logger.info("Task %s succeeded on attempt %d", task_id, attempt)
+        await message.ack()
+        return
 
-        if success:
-            logger.info("Task %s succeeded on attempt %d", task_id, attempt)
-            # message is acked by the process() context manager
-            return
-
-        # Failed — retry or dead-letter.
-        if attempt < settings.max_retries:
-            delay = attempt * settings.retry_delay_seconds
-            logger.warning(
-                "Task %s failed attempt %d/%d, retrying in %ds",
-                task_id, attempt, settings.max_retries, delay,
-            )
-            await asyncio.sleep(delay)
-
-            # Re-publish with incremented attempt header.
-            channel = message.channel
-            await channel.default_exchange.publish(
-                aio_pika.Message(
-                    body=message.body,
-                    headers={**headers, "x-attempt": attempt + 1},
-                    delivery_mode=aio_pika.DeliveryMode.PERSISTENT,
-                ),
-                routing_key=settings.task_queue,
-            )
-        else:
-            logger.error(
-                "Task %s exhausted %d retries — sending to DLQ",
-                task_id, settings.max_retries,
-            )
-            await set_task_status(
-                session_factory, task_id, "failed",
-                error_message=f"Exhausted {settings.max_retries} worker retries",
-            )
-            # nack without requeue → DLX routes to DLQ
-            await message.nack(requeue=False)
+    # Failed — retry or dead-letter.
+    if attempt < settings.max_retries:
+        delay = attempt * settings.retry_delay_seconds
+        logger.warning(
+            "Task %s failed attempt %d/%d, retrying in %ds",
+            task_id, attempt, settings.max_retries, delay,
+        )
+        await message.ack()  # ack the original, re-publish with new attempt
+        await asyncio.sleep(delay)
+        channel = message.channel
+        await channel.default_exchange.publish(
+            aio_pika.Message(
+                body=message.body,
+                headers={**headers, "x-attempt": attempt + 1},
+                delivery_mode=aio_pika.DeliveryMode.PERSISTENT,
+            ),
+            routing_key=settings.task_queue,
+        )
+    else:
+        logger.error(
+            "Task %s exhausted %d retries — sending to DLQ",
+            task_id, settings.max_retries,
+        )
+        await set_task_status(
+            session_factory, task_id, "failed",
+            error_message=f"Exhausted {settings.max_retries} worker retries",
+        )
+        await message.nack(requeue=False)  # → DLX → DLQ
 
 
 async def run_consumer(once: bool = False) -> None:

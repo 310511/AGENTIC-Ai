@@ -1731,3 +1731,55 @@ INFO:     127.0.0.1:53378 - "POST /run HTTP/1.1" 202 Accepted
 2026-11-05 19:22:57,481 INFO app.graph.nodes — verify_node: task_id=8a7748ec-4e26-453e-a493-8b5bc84af879
 2026-11-05 19:22:57,481 ERROR app.graph.nodes — verify_node failed: 'result'
 2026-11-05 19:22:57,497 ERROR app.main — Task 8a7748ec-4e26-453e-a493-8b5bc84af879 failed: Execution failed: 'plan'
+INFO:     127.0.0.1:53914 - "POST /run HTTP/1.1" 202 Accepted
+2026-11-05 19:27:00,820 INFO httpx — HTTP Request: POST http://localhost:8002/retrieve "HTTP/1.1 200 OK"
+2026-11-05 19:27:02,130 INFO httpx — HTTP Request: POST http://localhost:8003/retrieve "HTTP/1.1 200 OK"
+2026-11-05 19:27:02,168 INFO httpx — HTTP Request: GET http://localhost:8004/tools "HTTP/1.1 200 OK"
+2026-11-05 19:27:02,174 INFO app.graph.nodes — plan_node: task_id=d5d85c18-503c-4fb2-9130-b7f021d8f938
+2026-11-05 19:27:10,475 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-05 19:27:10,494 INFO app.graph.nodes — tool_call_node: task_id=d5d85c18-503c-4fb2-9130-b7f021d8f938
+2026-11-05 19:27:10,824 INFO httpx — HTTP Request: POST http://localhost:8004/tools/invoke "HTTP/1.1 200 OK"
+2026-11-05 19:27:10,824 INFO app.graph.nodes — tool_call: server=research tool=web_search error=None
+2026-11-05 19:27:10,827 INFO httpx — HTTP Request: POST http://localhost:8004/tools/invoke "HTTP/1.1 200 OK"
+2026-11-05 19:27:10,854 INFO app.graph.nodes — tool_call: server=research tool=fetch_url error=None
+2026-11-05 19:27:10,857 INFO httpx — HTTP Request: POST http://localhost:8004/tools/invoke "HTTP/1.1 200 OK"
+2026-11-05 19:27:10,857 INFO app.graph.nodes — tool_call: server=research tool=summarise_text error=None
+2026-11-05 19:27:10,858 INFO httpx — HTTP Request: POST http://localhost:8004/tools/invoke "HTTP/1.1 200 OK"
+2026-11-05 19:27:10,858 INFO app.graph.nodes — tool_call: server=research tool=extract_keywords error=None
+2026-11-05 19:27:10,860 INFO app.graph.nodes — execute_node: task_id=d5d85c18-503c-4fb2-9130-b7f021d8f938 retry=0
+2026-11-05 19:27:16,003 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-05 19:27:16,007 INFO app.graph.nodes — verify_node: task_id=d5d85c18-503c-4fb2-9130-b7f021d8f938
+2026-11-05 19:27:17,695 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-05 19:27:18,124 INFO app.main — Task d5d85c18-503c-4fb2-9130-b7f021d8f938 completed
+2026-11-05 19:27:18,513 INFO httpx — HTTP Request: POST http://localhost:8003/store "HTTP/1.1 500 Internal Server Error"
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [61765]
+INFO:     Started server process [72865]
+INFO:     Waiting for application startup.
+2026-11-05 19:34:54,245 INFO app.main — Orchestrator ready — model=qwen2.5-coder:3b ollama=http://localhost:11434 knowledge=http://localhost:8002 graph=http://localhost:8003 mcp=http://localhost:8004
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54936 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55053 - "POST /run HTTP/1.1" 202 Accepted
+2026-11-05 19:35:52,586 INFO httpx — HTTP Request: POST http://localhost:8002/retrieve "HTTP/1.1 200 OK"
+2026-11-05 19:35:54,060 INFO httpx — HTTP Request: POST http://localhost:8003/retrieve "HTTP/1.1 200 OK"
+2026-11-05 19:35:54,089 INFO httpx — HTTP Request: GET http://localhost:8004/tools "HTTP/1.1 200 OK"
+2026-11-05 19:35:54,097 INFO app.graph.nodes — plan_node: task_id=33f2992f-1750-485b-a862-4eea2a0ec929
+2026-11-05 19:36:02,577 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-05 19:36:02,590 INFO app.graph.nodes — tool_call_node: task_id=33f2992f-1750-485b-a862-4eea2a0ec929
+2026-11-05 19:36:02,717 INFO httpx — HTTP Request: POST http://localhost:8004/tools/invoke "HTTP/1.1 200 OK"
+2026-11-05 19:36:02,717 INFO app.graph.nodes — tool_call: server=research tool=web_search error=None
+2026-11-05 19:36:02,723 INFO httpx — HTTP Request: POST http://localhost:8004/tools/invoke "HTTP/1.1 200 OK"
+2026-11-05 19:36:02,723 INFO app.graph.nodes — tool_call: server=research tool=fetch_url error=None
+2026-11-05 19:36:02,725 INFO httpx — HTTP Request: POST http://localhost:8004/tools/invoke "HTTP/1.1 200 OK"
+2026-11-05 19:36:02,725 INFO app.graph.nodes — tool_call: server=research tool=summarise_text error=None
+2026-11-05 19:36:02,728 INFO httpx — HTTP Request: POST http://localhost:8004/tools/invoke "HTTP/1.1 200 OK"
+2026-11-05 19:36:02,728 INFO app.graph.nodes — tool_call: server=research tool=extract_keywords error=None
+2026-11-05 19:36:02,730 INFO app.graph.nodes — execute_node: task_id=33f2992f-1750-485b-a862-4eea2a0ec929 retry=0
+2026-11-05 19:36:06,257 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-05 19:36:06,270 INFO app.graph.nodes — verify_node: task_id=33f2992f-1750-485b-a862-4eea2a0ec929
+2026-11-05 19:36:06,976 INFO httpx — HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-11-05 19:36:07,196 INFO app.main — Task 33f2992f-1750-485b-a862-4eea2a0ec929 completed
+2026-11-05 19:36:08,180 INFO httpx — HTTP Request: POST http://localhost:8003/store "HTTP/1.1 500 Internal Server Error"

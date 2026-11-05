@@ -944,3 +944,45 @@ INFO:     127.0.0.1:52094 - "GET /health HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53000 - "GET /health HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53294 - "GET /health HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53400 - "GET /tools HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53934 - "GET /tools HTTP/1.1" 200 OK
+[11/05/26 19:27:10] INFO     Tool 'web_search' rejected arguments: server.py:450
+                             ['query']                                          
+2026-11-05 19:27:10,819 INFO mcp.audit — tool_invocation tenant=607413ef-2059-44f7-afeb-82e845acee61 role=user server=research tool=web_search args=['arg'] success=True error= duration_ms=268.7 ts=2026-11-05T13:57:10.819399+00:00
+INFO:     127.0.0.1:53971 - "POST /tools/invoke HTTP/1.1" 200 OK
+                    INFO     Tool 'fetch_url' rejected arguments:  server.py:450
+                             ['url']                                            
+2026-11-05 19:27:10,827 INFO mcp.audit — tool_invocation tenant=607413ef-2059-44f7-afeb-82e845acee61 role=user server=research tool=fetch_url args=['arg'] success=True error= duration_ms=1.8 ts=2026-11-05T13:57:10.827033+00:00
+INFO:     127.0.0.1:53971 - "POST /tools/invoke HTTP/1.1" 200 OK
+                    INFO     Tool 'summarise_text' rejected        server.py:450
+                             arguments: ['text']                                
+2026-11-05 19:27:10,856 INFO mcp.audit — tool_invocation tenant=607413ef-2059-44f7-afeb-82e845acee61 role=user server=research tool=summarise_text args=['arg', 'max_sentences'] success=True error= duration_ms=1.6 ts=2026-11-05T13:57:10.856717+00:00
+INFO:     127.0.0.1:53971 - "POST /tools/invoke HTTP/1.1" 200 OK
+                    INFO     Tool 'extract_keywords' rejected      server.py:450
+                             arguments: ['text']                                
+2026-11-05 19:27:10,858 INFO mcp.audit — tool_invocation tenant=607413ef-2059-44f7-afeb-82e845acee61 role=user server=research tool=extract_keywords args=['arg', 'top_n'] success=True error= duration_ms=1.1 ts=2026-11-05T13:57:10.858601+00:00
+INFO:     127.0.0.1:53971 - "POST /tools/invoke HTTP/1.1" 200 OK
+[11/05/26 19:32:10] INFO     HTTP Request: GET                   _client.py:1773
+                             https://en.wikipedia.org/w/api.php?                
+                             action=query&list=search&srsearch=Q                
+                             wen%202.5%20language%20model%20Alib                
+                             aba&srlimit=5&format=json&utf8=1                   
+                             "HTTP/1.1 200 OK"                                  
+2026-11-05 19:32:10,313 INFO mcp.audit — tool_invocation tenant=607413ef-2059-44f7-afeb-82e845acee61 role=user server=research tool=web_search args=['query'] success=True error= duration_ms=1217.6 ts=2026-11-05T14:02:10.313097+00:00
+INFO:     127.0.0.1:54599 - "POST /tools/invoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55073 - "GET /tools HTTP/1.1" 200 OK
+[11/05/26 19:36:02] INFO     Tool 'web_search' rejected arguments: server.py:450
+                             ['query']                                          
+2026-11-05 19:36:02,706 INFO mcp.audit — tool_invocation tenant=607413ef-2059-44f7-afeb-82e845acee61 role=user server=research tool=web_search args=['arg'] success=True error= duration_ms=83.2 ts=2026-11-05T14:06:02.706836+00:00
+INFO:     127.0.0.1:55113 - "POST /tools/invoke HTTP/1.1" 200 OK
+                    INFO     Tool 'fetch_url' rejected arguments:  server.py:450
+                             ['url']                                            
+2026-11-05 19:36:02,723 INFO mcp.audit — tool_invocation tenant=607413ef-2059-44f7-afeb-82e845acee61 role=user server=research tool=fetch_url args=['arg'] success=True error= duration_ms=4.7 ts=2026-11-05T14:06:02.723096+00:00
+INFO:     127.0.0.1:55113 - "POST /tools/invoke HTTP/1.1" 200 OK
+                    INFO     Tool 'summarise_text' rejected        server.py:450
+                             arguments: ['text']                                
+2026-11-05 19:36:02,725 INFO mcp.audit — tool_invocation tenant=607413ef-2059-44f7-afeb-82e845acee61 role=user server=research tool=summarise_text args=['arg'] success=True error= duration_ms=1.4 ts=2026-11-05T14:06:02.725337+00:00
+INFO:     127.0.0.1:55113 - "POST /tools/invoke HTTP/1.1" 200 OK
+                    INFO     Tool 'extract_keywords' rejected      server.py:450
+                             arguments: ['text']                                
+2026-11-05 19:36:02,728 INFO mcp.audit — tool_invocation tenant=607413ef-2059-44f7-afeb-82e845acee61 role=user server=research tool=extract_keywords args=['arg'] success=True error= duration_ms=2.5 ts=2026-11-05T14:06:02.728623+00:00
+INFO:     127.0.0.1:55113 - "POST /tools/invoke HTTP/1.1" 200 OK

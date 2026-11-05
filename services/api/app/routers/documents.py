@@ -2,7 +2,8 @@
 Document ingest and management endpoints.
 
 Routes:
-  POST   /documents/ingest         — chunk, embed, and index a document
+  POST   /documents/ingest         — chunk, embed, and index a document (text)
+  POST   /documents/upload         — upload PDF/image, extract text, chunk, embed, index
   POST   /documents/search         — semantic search across tenant's documents
   DELETE /documents/{document_id}  — remove a document from the knowledge index
 
@@ -11,11 +12,12 @@ All routes are JWT-protected and tenant-scoped.
 from __future__ import annotations
 
 import logging
+import uuid as _uuid
 from typing import Annotated, Any
 from uuid import UUID
 
 import httpx
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
 from pydantic import BaseModel, Field
 
 from ..config import get_settings
@@ -107,6 +109,56 @@ async def ingest_document(
     logger.info(
         "Document ingested: id=%s tenant=%s chunks=%s",
         payload.document_id, user.tenant_id, data.get("chunks_indexed"),
+    )
+    return IngestResponse(**data)
+
+
+@router.post(
+    "/upload",
+    response_model=IngestResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Upload a PDF or image and index it into the knowledge base",
+)
+async def upload_document(
+    user: CurrentUser,
+    http: Annotated[httpx.AsyncClient, Depends(get_http_client)],
+    file: UploadFile = File(...),
+    title: str = Form(...),
+    document_id: str = Form(default=""),
+) -> IngestResponse:
+    """
+    Upload a PDF or image file. The knowledge service extracts text
+    (pdfplumber for PDFs, pytesseract OCR for images), chunks it,
+    embeds it, and stores it in FAISS — all scoped to the user's tenant.
+
+    Supported: PDF, PNG, JPG, TIFF, BMP, WEBP (max 50 MB).
+    """
+    doc_id = document_id.strip() or str(_uuid.uuid4())
+    knowledge_url = get_settings().knowledge_url.rstrip("/")
+
+    file_bytes = await file.read()
+    try:
+        resp = await http.post(
+            f"{knowledge_url}/ingest-file",
+            data={
+                "tenant_id":   str(user.tenant_id),
+                "document_id": doc_id,
+                "title":       title,
+            },
+            files={"file": (file.filename, file_bytes, file.content_type)},
+            timeout=120.0,  # OCR on large PDFs can be slow
+        )
+        resp.raise_for_status()
+        data = resp.json()
+    except httpx.HTTPStatusError as exc:
+        raise HTTPException(status_code=exc.response.status_code, detail=exc.response.text) from exc
+    except Exception as exc:
+        logger.error("File upload to knowledge service failed: %s", exc)
+        raise HTTPException(status_code=503, detail="Knowledge service unavailable") from exc
+
+    logger.info(
+        "File uploaded: id=%s tenant=%s filename=%s chunks=%s",
+        doc_id, user.tenant_id, file.filename, data.get("chunks_indexed"),
     )
     return IngestResponse(**data)
 

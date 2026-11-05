@@ -101,3 +101,26 @@ export async function ingestDocument(
   );
   return res as unknown as { document_id: string; chunks_indexed: number };
 }
+
+export async function uploadDocument(
+  token: string,
+  file: File,
+  title: string,
+  documentId?: string,
+): Promise<{ document_id: string; chunks_indexed: number }> {
+  const form = new FormData();
+  form.append("file", file);
+  form.append("title", title);
+  if (documentId) form.append("document_id", documentId);
+
+  const res = await fetch(`${BASE}/api/v1/documents/upload`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: form,
+  });
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.detail ?? `HTTP ${res.status}`);
+  }
+  return res.json();
+}

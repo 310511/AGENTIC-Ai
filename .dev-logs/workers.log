@@ -548,3 +548,20 @@ AttributeError: 'Channel' object has no attribute 'default_exchange'
 2026-11-05 19:22:53,091 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
 2026-11-05 19:22:53,092 INFO app.runner — Task 8a7748ec-4e26-453e-a493-8b5bc84af879 accepted by orchestrator (attempt 1)
 2026-11-05 19:22:53,092 INFO __main__ — Task 8a7748ec-4e26-453e-a493-8b5bc84af879 succeeded on attempt 1
+2026-11-05 19:26:42,541 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-05 19:26:42,575 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-05 19:26:42,576 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-05 19:27:00,263 INFO __main__ — Received task_id=d5d85c18-503c-4fb2-9130-b7f021d8f938 attempt=1
+2026-11-05 19:27:00,264 INFO app.runner — Worker attempt=1 task_id=d5d85c18-503c-4fb2-9130-b7f021d8f938
+2026-11-05 19:27:00,269 INFO __main__ — Worker shut down cleanly
+2026-11-05 19:27:00,385 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
+2026-11-05 19:27:00,385 INFO app.runner — Task d5d85c18-503c-4fb2-9130-b7f021d8f938 accepted by orchestrator (attempt 1)
+2026-11-05 19:27:00,385 INFO __main__ — Task d5d85c18-503c-4fb2-9130-b7f021d8f938 succeeded on attempt 1
+2026-11-05 19:34:53,673 INFO __main__ — Connecting to RabbitMQ: localhost:5672/
+2026-11-05 19:34:53,752 INFO app.queue — Queues declared: agent.tasks → DLX → agent.tasks.dlq
+2026-11-05 19:34:53,753 INFO __main__ — Worker ready — queue=agent.tasks prefetch=4 max_retries=3
+2026-11-05 19:35:51,113 INFO __main__ — Received task_id=33f2992f-1750-485b-a862-4eea2a0ec929 attempt=1
+2026-11-05 19:35:51,118 INFO app.runner — Worker attempt=1 task_id=33f2992f-1750-485b-a862-4eea2a0ec929
+2026-11-05 19:35:51,298 INFO httpx — HTTP Request: POST http://localhost:8001/run "HTTP/1.1 202 Accepted"
+2026-11-05 19:35:51,299 INFO app.runner — Task 33f2992f-1750-485b-a862-4eea2a0ec929 accepted by orchestrator (attempt 1)
+2026-11-05 19:35:51,299 INFO __main__ — Task 33f2992f-1750-485b-a862-4eea2a0ec929 succeeded on attempt 1

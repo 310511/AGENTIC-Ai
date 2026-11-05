@@ -279,3 +279,137 @@ INFO:     127.0.0.1:52092 - "GET /health HTTP/1.1" 200 OK
 INFO:     127.0.0.1:52998 - "GET /health HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53292 - "GET /health HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53387 - "POST /retrieve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53921 - "POST /retrieve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53997 - "POST /store HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/app/main.py", line 143, in store
+    merged_e = await _store.merge_entities(str(req.tenant_id), entities_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/app/graph_store.py", line 85, in merge_entities
+    record = await result.single()
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/work/result.py", line 485, in single
+    await self._buffer(2)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/work/result.py", line 318, in _buffer
+    async for record in self:
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/work/result.py", line 270, in __aiter__
+    await self._connection.fetch_message()
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/io/_common.py", line 188, in inner
+    await coroutine_func(*args, **kwargs)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/io/_bolt.py", line 850, in fetch_message
+    res = await self._process_message(tag, fields)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/io/_bolt5.py", line 369, in _process_message
+    await response.on_failure(summary_metadata or {})
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/io/_common.py", line 245, in on_failure
+    raise Neo4jError.hydrate(**metadata)
+neo4j.exceptions.CypherTypeError: {code: Neo.ClientError.Statement.TypeError} {message: Property values can only be of primitive types or arrays thereof. Encountered: Map{description -> String("Search Wikipedia for Qwen 2.5 language model and summarize what it is, who made it, and key capabilities.")}.}
+INFO:     127.0.0.1:55069 - "POST /retrieve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55138 - "POST /store HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 69, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/app/main.py", line 143, in store
+    merged_e = await _store.merge_entities(str(req.tenant_id), entities_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/app/graph_store.py", line 85, in merge_entities
+    record = await result.single()
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/work/result.py", line 485, in single
+    await self._buffer(2)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/work/result.py", line 318, in _buffer
+    async for record in self:
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/work/result.py", line 270, in __aiter__
+    await self._connection.fetch_message()
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/io/_common.py", line 188, in inner
+    await coroutine_func(*args, **kwargs)
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/io/_bolt.py", line 850, in fetch_message
+    res = await self._process_message(tag, fields)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/io/_bolt5.py", line 369, in _process_message
+    await response.on_failure(summary_metadata or {})
+  File "/Users/utsavgautam/AIAgent/services/graph-memory/.venv/lib/python3.12/site-packages/neo4j/_async/io/_common.py", line 245, in on_failure
+    raise Neo4jError.hydrate(**metadata)
+neo4j.exceptions.CypherTypeError: {code: Neo.ClientError.Statement.TypeError} {message: Property values can only be of primitive types or arrays thereof. Encountered: Map{description -> String("Search Wikipedia for Qwen 2.5 language model. Summarize: what it is, who made it, key capabilities.")}.}
